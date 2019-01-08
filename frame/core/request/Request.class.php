@@ -6,6 +6,8 @@
  * Time: 10:28
  */
 
+namespace frame\core\request;
+
 class Request
 {
     public $group;
@@ -46,8 +48,8 @@ class Request
     function getRequest()
     {
         // 是否存在分组
-        if (!is_dir('action/' . strtolower($this->group))) {
-            echo '控制器文件' . ucfirst($this->action) . 'Controller.class.php不存在';
+        if (!is_dir(ACTION_PATH . '/' . strtolower($this->group))) {
+            echo '分组' . $this->group . '不存在';
             return false;
         }
 

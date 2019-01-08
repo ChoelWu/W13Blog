@@ -6,10 +6,14 @@
  * Time: 9:32
  */
 
-define('ACTION_PATH', __DIR__ . '/action');
-
 define('ROOT_PATH', __DIR__);
 
-define('CORE_PATH', __DIR__ . '/core');
+define('APP_PATH', ROOT_PATH . '/app');
 
-include CORE_PATH . '/init.php';
+define('ACTION_PATH', APP_PATH . '/action');
+
+define('FRAME_PATH', ROOT_PATH . '/frame');
+
+define('CORE_PATH', FRAME_PATH . '/core');
+
+include FRAME_PATH . '/init.php';
