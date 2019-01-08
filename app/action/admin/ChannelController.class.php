@@ -22,6 +22,6 @@ class ChannelController extends CommonController
 
     public function test()
     {
-        $this->display('tpl/default/admin/channel/index.html');
+        $this->display('tpl/default/admin/article/index.html');
     }
 }

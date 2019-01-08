@@ -23,7 +23,7 @@ class BaseController
      */
     public function display($tpl)
     {
-        $this->smarty->display('tpl/default/admin/channel/index.html');
+        return $this->smarty->display($tpl);
     }
 
     /**
