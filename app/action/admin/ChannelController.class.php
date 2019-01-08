@@ -10,23 +10,8 @@ include ACTION_PATH . '/CommonController.class.php';
 
 class ChannelController extends CommonController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function index()
     {
-        echo 'hello world';
-    }
-
-    public function test()
-    {
         $this->display('tpl/default/admin/channel/index.html');
-    }
-
-    public function test2()
-    {
-        $this->display('tpl/default/admin/article/index.html');
     }
 }
