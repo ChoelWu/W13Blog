@@ -14,4 +14,10 @@ class IndexController extends CommonController
     {
         $this->display('tpl/default/admin/index/index.html');
     }
+
+    public function getMenu()
+    {
+        $rel = include CONFIG_PATH . '/menu.php';
+        echo json_encode($rel);
+    }
 }

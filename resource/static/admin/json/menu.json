@@ -1,18 +1,12 @@
 [
   {
-    "id": "index-page",
-    "name": "统计（首页）",
-    "target": "navtab",
-    "url": "index.php?g=admin&m=test2&a=channel"
-  },
-  {
     "name": "模块管理",
     "children": [
       {
         "id": "channel-page",
         "name": "栏目管理",
         "target": "navtab",
-        "url": "html/base/navtab.html"
+        "url": "index.php?g=admin&m=test2&a=channel"
       },
       {
         "id": "slider-pic-page",

@@ -29,7 +29,8 @@ class Request
         $this->method = empty($method) ? 'index' : strtolower($method);
 
         // 完整控制器名
-        $this->action_controller = ucfirst($this->action) . 'Controller';
+        $rawActionName = explode('_', $this->action);
+        $this->action_controller = setCamelType($rawActionName) . 'Controller';
 
         // 控制器路径
         $this->action_controller_path = ACTION_PATH . '/' . strtolower($this->group) . '/' . $this->action_controller . '.class.php';

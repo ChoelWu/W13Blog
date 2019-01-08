@@ -10,9 +10,11 @@ define('ROOT_PATH', __DIR__);
 
 define('APP_PATH', ROOT_PATH . '/app');
 
-define('ACTION_PATH', APP_PATH . '/action');
-
 define('FRAME_PATH', ROOT_PATH . '/frame');
+
+define('CONFIG_PATH', ROOT_PATH . '/configs');
+
+define('ACTION_PATH', APP_PATH . '/action');
 
 define('CORE_PATH', FRAME_PATH . '/core');
 
