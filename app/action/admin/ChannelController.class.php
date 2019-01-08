@@ -6,16 +6,13 @@
  * Time: 9:26
  */
 
-namespace app\action\admin;
-
 include ACTION_PATH . '/CommonController.class.php';
-
-use app\action\CommonController;
 
 class ChannelController extends CommonController
 {
     public function __construct()
     {
+        parent::__construct();
     }
 
     public function index()
@@ -25,7 +22,6 @@ class ChannelController extends CommonController
 
     public function test()
     {
-        echo 'test';
         $this->display('tpl/default/admin/channel/index.html');
     }
 }

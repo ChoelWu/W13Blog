@@ -6,16 +6,14 @@
  * Time: 11:36
  */
 
-namespace frame\core\action;
-
 class BaseController
 {
     public $smarty; // 视图对象
 
     public function __construct()
     {
-        include ROOT_PATH . 'frame/smarty/libs/Smarty.class.php';
-        $this->smarty = new \Smarty();
+        include ROOT_PATH . '/frame/smarty/libs/Smarty.class.php';
+        $this->smarty = new Smarty();
     }
 
     /**
@@ -25,7 +23,7 @@ class BaseController
      */
     public function display($tpl)
     {
-        return $this->smarty->display($tpl);
+        $this->smarty->display('tpl/default/admin/channel/index.html');
     }
 
     /**

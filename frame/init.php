@@ -7,7 +7,6 @@
  */
 
 include CORE_PATH . '/request/Request.class.php';
-use frame\core\request\Request;
 
 $request = new Request();
 $request->run();

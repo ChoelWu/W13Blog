@@ -6,8 +6,6 @@
  * Time: 10:28
  */
 
-namespace frame\core\request;
-
 class Request
 {
     public $group;
@@ -60,7 +58,7 @@ class Request
         }
 
         // 检查类中是否存在方法
-        require($this->action_controller_path);
+        include $this->action_controller_path;
         $actionObj = new $this->action_controller;
         if (!method_exists($actionObj, $this->method)) {
             echo '控制器文件' . ucfirst($this->action) . 'Controller.class.php中' . $this->method . '方法不存在';
