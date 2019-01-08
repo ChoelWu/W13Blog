@@ -6,6 +6,8 @@
  * Time: 10:28
  */
 
+include 'requestFun.php';
+
 class Request
 {
     public $group;
@@ -17,9 +19,9 @@ class Request
     public function __construct()
     {
         // 获得http请求传入的分组、控制器、方法名
-        $group = trim($_GET['g']);
-        $action = trim($_GET['a']);
-        $method = trim($_GET['m']);
+        $group = get('g');
+        $action = get('a');
+        $method = get('m');
 
         // 对分组、控制器、方法名进行标准化处理
         $this->group = empty($group) ? 'Index' : ucfirst(strtolower($group));
