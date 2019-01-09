@@ -12,13 +12,20 @@ class ChannelController extends CommonController
 {
     public function index()
     {
-
+        $sql = 'SELECT * FROM `blog_channel`;';
+        $data = $this->db->getAll($sql);
+        $type = getConfig('dictionary.channel.type', '未知');
+        $this->assign(['data' => $data, 'type' => $type]);
         $this->display('tpl/default/admin/channel/index.html');
     }
 
-    public function view() {
-        $sql = 'SELECT * FROM `blog_channel`;';
-        $data = $this->db->getAll($sql);
-        echo json_encode($data);
+    public function add() {
+
     }
+
+    public function edit() {
+
+    }
+
+    public function delete() {}
 }

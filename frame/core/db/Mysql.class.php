@@ -33,6 +33,11 @@ class Mysql
 
     }
 
+    /**
+     * 获得全部满足条件的数组数据集合
+     * @param $sql
+     * @return array|null
+     */
     public function getAll($sql)
     {
         $result = mysqli_query($this->con, $sql);

@@ -13,8 +13,9 @@ class BaseController
 
     public function __construct()
     {
-        include ROOT_PATH . '/frame/smarty/libs/Smarty.class.php';
-        include ROOT_PATH . '/frame/core/db/Mysql.class.php';
+        include FRAME_PATH . '/smarty/libs/Smarty.class.php';
+        include CORE_PATH . '/db/Mysql.class.php';
+        include CORE_PATH . '/config/config.php';
         $db_config = include CONFIG_PATH . '/db.php';
         $db_type = $db_config['db_type'];
         $this->db = new $db_type($db_config['db_host'], $db_config['db_user'], $db_config['db_pwd'], $db_config['db_name']);
