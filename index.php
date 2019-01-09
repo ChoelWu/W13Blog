@@ -23,3 +23,5 @@ define('ACTION_PATH', APP_PATH . '/action');
 define('CORE_PATH', FRAME_PATH . '/core');
 
 include FRAME_PATH . '/init.php';
+
+

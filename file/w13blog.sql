@@ -59,13 +59,6 @@ CREATE TABLE `blog_channel` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of blog_channel
--- ----------------------------
-INSERT INTO `blog_channel` VALUES ('1', '栏目一', '1', '1', '栏目一', '栏目一', null, null);
-INSERT INTO `blog_channel` VALUES ('2', '1	栏目一	1	1	栏目一	栏目一		', '0', '2', null, '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `blog_channel` VALUES ('3', '1	栏目一	1	1	栏目一	栏目一		', '0', '2', '', '1', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
--- ----------------------------
 -- Table structure for blog_comment
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_comment`;
