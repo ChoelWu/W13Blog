@@ -18,13 +18,14 @@ class Request
 
     public function __construct()
     {
+        $common_config = include(CONFIG_PATH . '/common.php');
         // 获得http请求传入的分组、控制器、方法名
         $group = get('g');
         $action = get('a');
         $method = get('m');
 
         // 对分组、控制器、方法名进行标准化处理
-        $this->group = empty($group) ? 'Index' : ucfirst(strtolower($group));
+        $this->group = empty($group) ? (empty($common_config['default_group']) ? 'Index' : ucfirst(strtolower($common_config['default_group']))) : ucfirst(strtolower($group));
         $this->action = empty($action) ? 'index' : strtolower($action);
         $this->method = empty($method) ? 'index' : strtolower($method);
 

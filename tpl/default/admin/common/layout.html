@@ -1,158 +1,197 @@
-{include file='tpl/default/admin/common/header.html'}
+<{include file='tpl/default/admin/common/header.html'}>
 <body>
-<!--[if lte IE 7]>
-<div id="errorie">
-    <div>您还在使用老掉牙的IE，正常使用系统前请升级您的浏览器到 IE8以上版本
-        <a target="_blank" href="http://windows.microsoft.com/zh-cn/internet-explorer/ie-8-worldwide-languages">点击升级</a>
-        &nbsp;&nbsp;强烈建议您更改换浏览器：
-        <a href="http://down.tech.sina.com.cn/content/40975.html" target="_blank">谷歌 Chrome</a>
-    </div>
-</div>
-<![endif]-->
-<div id="bjui-top" class="bjui-header">
-    <div class="container_fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapsenavbar"
-                    data-target="#bjui-top-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<header class="navbar-wrapper">
+    <div class="navbar navbar-fixed-top">
+        <div class="container-fluid cl"><a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
+            <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+            <span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.1</span>
+            <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+            <nav class="nav navbar-nav">
+                <ul class="cl">
+                    <li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i
+                            class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i
+                                    class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
+                            <li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i
+                                    class="Hui-iconfont">&#xe613;</i> 图片</a></li>
+                            <li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i
+                                    class="Hui-iconfont">&#xe620;</i> 产品</a></li>
+                            <li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i
+                                    class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                <ul class="cl">
+                    <li>超级管理员</li>
+                    <li class="dropDown dropDown_hover">
+                        <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                            <li><a href="#">切换账户</a></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </li>
+                    <li id="Hui-msg"><a href="#" title="消息"><span class="badge badge-danger">1</span><i
+                            class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a></li>
+                    <li id="Hui-skin" class="dropDown right dropDown_hover"><a href="javascript:;" class="dropDown_A"
+                                                                               title="换肤"><i class="Hui-iconfont"
+                                                                                             style="font-size:18px">&#xe62a;</i></a>
+                        <ul class="dropDown-menu menu radius box-shadow">
+                            <li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
+                            <li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
+                            <li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
+                            <li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
+                            <li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
+                            <li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <nav class="collapse navbar-collapse" id="bjui-top-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="datetime"><a><span id="bjui-date">0000/00/00</span> <span id="bjui-clock">00:00:00</span></a>
-                </li>
-                <li>
-                    <a href="#">账号：BJUI</a>
-                </li>
-                <li>
-                    <a href="#">角色：管理员</a>
-                </li>
-                <li>
-                    <a href="changepassword.html" data-toggle="dialog" data-id="sys_user_changepass" data-mask="true"
-                       data-width="400" data-height="300">修改密码</a>
-                </li>
-                <li><a href="login.html" style="font-weight:bold;">
-                    <i class="fa fa-power-off"></i> 注销登陆</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle bjui-fonts-tit" data-toggle="dropdown" title="更改字号">
-                        <i class="fa fa-font"></i> 大
-                    </a>
-                    <ul class="dropdown-menu" role="menu" id="bjui-fonts">
-                        <li><a href="javascript:;" class="bjui-font-a" data-toggle="fonts"><i class="fa fa-font"></i> 特大</a>
-                        </li>
-                        <li><a href="javascript:;" class="bjui-font-b" data-toggle="fonts"><i class="fa fa-font"></i> 大</a>
-                        </li>
-                        <li><a href="javascript:;" class="bjui-font-c" data-toggle="fonts"><i class="fa fa-font"></i> 中</a>
-                        </li>
-                        <li><a href="javascript:;" class="bjui-font-d" data-toggle="fonts"><i class="fa fa-font"></i> 小</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle theme" data-toggle="dropdown" title="切换皮肤">
-                        <i class="fa fa-tree"></i>
-                    </a>
-                    <ul class="dropdown-menu" role="menu" id="bjui-themes">
-                        <li>
-                            <a href="javascript:;" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i
-                                    class="fa fa-tree"></i> 紫罗兰</a>
-                        </li>
-                        <li class="active"><a href="javascript:;" class="theme_blue" data-toggle="theme"
-                                              data-theme="blue">&nbsp;<i class="fa fa-tree"></i> 天空蓝</a></li>
-                        <li><a href="javascript:;" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i
-                                class="fa fa-tree"></i> 绿草如茵</a></li>
-                    </ul>
-                </li>
-                <li><a href="javascript:;" onclick="bjui_index_exchange()" title="横向收缩/充满屏幕"><i
-                        class="fa fa-exchange"></i></a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-<header class="navbar bjui-header" id="bjui-navbar">
-    <div class="container_fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" id="bjui-navbar-collapsebtn"
-                    data-toggle="collapsenavbar" data-target="#bjui-navbar-collapse" aria-expanded="false">
-                <i class="fa fa-angle-double-right"></i>
-            </button>
-            <a class="navbar-brand" href="http://b-jui.com">
-                <img src="resource/static/admin/images/logo.png" height="30">
-            </a>
-        </div>
-        <nav class="collapse navbar-collapse" id="bjui-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right" id="bjui-hnav-navbar">
-                <li class="active">
-                    <a href="index.php?g=admin&a=index&m=getMenu" data-toggle="sidenav" data-id-key="targetid">返回首页</a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="sidenav" data-tree="true" data-tree-options="{
-                        onClick:MainMenuClick
-                    }" data-id-key="targetid">待续……</a>
-                    <script class="items"></script>
-                </li>
-                <li>
-                    <a href="1.2" target="_blank">按钮</a>
-                </li>
-            </ul>
-        </nav>
     </div>
 </header>
-<div id="bjui-body-box">
-    <div class="container_fluid" id="bjui-body">
-        <div id="bjui-sidenav-col">
-            <div id="bjui-sidenav">
-                <div id="bjui-sidenav-arrow" data-toggle="tooltip" data-placement="left" data-title="隐藏左侧菜单">
-                    <i class="fa fa-long-arrow-left"></i>
-                </div>
-                <div id="bjui-sidenav-box">
-                </div>
-            </div>
-        </div>
-        <div id="bjui-navtab" class="tabsPage">
-            <div id="bjui-sidenav-btn" data-toggle="tooltip" data-title="显示左侧菜单" data-placement="right">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="tabsPageHeader">
-                <div class="tabsPageHeaderContent">
-                    <ul class="navtab-tab nav nav-tabs">
-                        <li>
-                            <a href="javascript:;">
-                            <span>
-                                <i class="fa fa-home"></i> #maintab#
-                            </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tabsLeft">
-                    <i class="fa fa-angle-double-left"></i>
-                </div>
-                <div class="tabsRight">
-                    <i class="fa fa-angle-double-right"></i>
-                </div>
-                <div class="tabsMore">
-                    <i class="fa fa-angle-double-down"></i>
-                </div>
-            </div>
-            <ul class="tabsMoreList">
-                <li>
-                    <a href="javascript:;">#maintab#</a>
+<aside class="Hui-aside">
+    <div class="menu_dropdown bk_2">
+        <dl id="menu-article">
+            <dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="article-list.html" data-title="资讯管理" href="javascript:void(0)">资讯管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-picture">
+            <dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="picture-list.html" data-title="图片管理" href="javascript:void(0)">图片管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-product">
+            <dt><i class="Hui-iconfont">&#xe620;</i> 产品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="product-brand.html" data-title="品牌管理" href="javascript:void(0)">品牌管理</a></li>
+                    <li><a data-href="product-category.html" data-title="分类管理" href="javascript:void(0)">分类管理</a></li>
+                    <li><a data-href="product-list.html" data-title="产品管理" href="javascript:void(0)">产品管理</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-comments">
+            <dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="http://h-ui.duoshuo.com/admin/" data-title="评论列表" href="javascript:;">评论列表</a>
+                    </li>
+                    <li><a data-href="feedback-list.html" data-title="意见反馈" href="javascript:void(0)">意见反馈</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-member">
+            <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="member-list.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
+                    <li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
+                    <li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
+                    <li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
+                    <li><a data-href="member-record-browse.html" data-title="浏览记录" href="javascript:void(0)">浏览记录</a>
+                    </li>
+                    <li><a data-href="member-record-download.html" data-title="下载记录" href="javascript:void(0)">下载记录</a>
+                    </li>
+                    <li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-admin">
+            <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+                    <li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+                    <li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-tongji">
+            <dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    <li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
+                    <li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
+                    <li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
+                    <li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
+                    <li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
+                    <li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
+                    <li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl id="menu-system">
+            <dt>
+                <i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+            </dt>
+            <dd>
+                <ul>
+                    <li>
+                        <a data-href="system-base.html" data-title="系统设置" href="javascript:void(0)">系统设置</a>
+                    </li>
+                    <li>
+                        <a data-href="system-category.html" data-title="栏目管理" href="javascript:void(0)">栏目管理</a>
+                    </li>
+                    <li>
+                        <a data-href="system-data.html" data-title="数据字典" href="javascript:void(0)">数据字典</a>
+                    </li>
+                    <li>
+                        <a data-href="system-shielding.html" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a>
+                    </li>
+                    <li>
+                        <a data-href="system-log.html" data-title="系统日志" href="javascript:void(0)">系统日志</a>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</aside>
+<div class="dislpayArrow hidden-xs">
+    <a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a>
+</div>
+<section class="Hui-article-box">
+    <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+        <div class="Hui-tabNav-wp">
+            <ul id="min_title_list" class="acrossTab cl">
+                <li class="active">
+                    <span title="我的桌面" data-href="index.php?g=admin&a=index&m=home">我的桌面</span>
+                    <em></em>
                 </li>
             </ul>
-            <div class="navtab-panel tabsPageContent">
-                <div class="navtabPage unitBox">
-                    {block name="content"}{/block}
-                </div>
-            </div>
+        </div>
+        <div class="Hui-tabNav-more btn-group">
+            <a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;">
+                <i class="Hui-iconfont">&#xe6d4;</i>
+            </a>
+            <a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;">
+                <i class="Hui-iconfont">&#xe6d7;</i>
+            </a>
         </div>
     </div>
+    <div id="iframe_box" class="Hui-article">
+        <div class="show_iframe">
+            <div style="display:none" class="loading"></div>
+            <iframe scrolling="yes" frameborder="0" src="index.php?g=admin&a=index&m=home"></iframe>
+        </div>
+    </div>
+</section>
+
+<div class="contextMenu" id="Huiadminmenu">
+    <ul>
+        <li id="closethis">关闭当前</li>
+        <li id="closeall">关闭全部</li>
+    </ul>
 </div>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="resource/static/admin/B-JUI/other/ie10-viewport-bug-workaround.js"></script>
-</body>
-{include file='tpl/default/admin/common/footer.html'}
+<{include file='tpl/default/admin/common/footer.html'}>

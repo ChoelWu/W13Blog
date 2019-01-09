@@ -1,121 +1,61 @@
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lte IE 9]>
-<script src="resource/static/admin/B-JUI/other/html5shiv.min.js"></script>
-<script src="resource/static/admin/B-JUI/other/respond.min.js"></script>
-<![endif]-->
-<!-- jquery -->
-<script src="resource/static/admin/B-JUI/js/jquery-1.11.3.min.js"></script>
-<script src="resource/static/admin/B-JUI/js/jquery.cookie.js"></script>
-<!--[if lte IE 9]>
-<script src="resource/static/admin/B-JUI/other/jquery.iframe-transport.js"></script>
-<![endif]-->
-<!-- B-JUI -->
-<script src="resource/static/admin/B-JUI/js/bjui-all.min.js"></script>
-<!-- plugins -->
-<!-- swfupload for kindeditor -->
-<script src="resource/static/admin/B-JUI/plugins/swfupload/swfupload.js"></script>
-<!-- Webuploader -->
-<script src="resource/static/admin/B-JUI/plugins/webuploader/webuploader.js"></script>
-<!-- kindeditor -->
-<script src="resource/static/admin/B-JUI/plugins/kindeditor_4.1.11/kindeditor-all-min.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/kindeditor_4.1.11/lang/zh-CN.js"></script>
-<!-- colorpicker -->
-<script src="resource/static/admin/B-JUI/plugins/colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- ztree -->
-<script src="resource/static/admin/B-JUI/plugins/ztree/jquery.ztree.all-3.5.js"></script>
-<!-- nice validate -->
-<script src="resource/static/admin/B-JUI/plugins/nice-validator-1.0.7/jquery.validator.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/nice-validator-1.0.7/jquery.validator.themes.js"></script>
-<!-- bootstrap plugins -->
-<script src="resource/static/admin/B-JUI/plugins/bootstrap.min.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/bootstrapSelect/bootstrap-select.min.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/bootstrapSelect/defaults-zh_CN.min.js"></script>
-<!-- icheck -->
-<script src="resource/static/admin/B-JUI/plugins/icheck/icheck.min.js"></script>
-<!-- HighCharts -->
-<script src="resource/static/admin/B-JUI/plugins/highcharts/highcharts.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/highcharts/highcharts-3d.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/highcharts/themes/gray.js"></script>
-<!-- other plugins -->
-<script src="resource/static/admin/B-JUI/plugins/other/jquery.autosize.js"></script>
-<link href="resource/static/admin/B-JUI/plugins/uploadify/css/uploadify.css" rel="stylesheet">
-<script src="resource/static/admin/B-JUI/plugins/uploadify/scripts/jquery.uploadify.min.js"></script>
-<script src="resource/static/admin/B-JUI/plugins/download/jquery.fileDownload.js"></script>
-<!-- init -->
-<script type="text/javascript">
-    $(function () {
-        BJUI.init({
-            JSPATH: 'B-JUI/',         //[可选]框架路径
-            PLUGINPATH: 'B-JUI/plugins/', //[可选]插件路径
-            loginInfo: {
-                url: 'login_timeout.html', title: '登录', width: 440, height: 240
-            }, // 会话超时后弹出登录对话框
-            statusCode: {
-                ok: 200, error: 300, timeout: 301
-            }, //[可选]
-            ajaxTimeout: 300000, //[可选]全局Ajax请求超时时间(毫秒)
-            alertTimeout: 3000,  //[可选]信息提示[info/correct]自动关闭延时(毫秒)
-            pageInfo: {
-                total: 'totalRow',
-                pageCurrent: 'pageCurrent',
-                pageSize: 'pageSize',
-                orderField: 'orderField',
-                orderDirection: 'orderDirection'
-            }, //[可选]分页参数
-            keys: {
-                statusCode: 'statusCode', message: 'message'
-            }, //[可选]
-            ui: {
-                sidenavWidth: 220,
-                showSlidebar: true, //[可选]左侧导航栏锁定/隐藏
-                overwriteHomeTab: false //[可选]当打开一个未定义id的navtab时，是否可以覆盖主navtab(我的主页)
-            },
-            debug: true,    // [可选]调试模式 [true|false，默认false]
-            theme: 'green' // 若有Cookie['bjui_theme'],优先选择Cookie['bjui_theme']。皮肤[五种皮肤:default, orange, purple, blue, red, green]
-        })
-        //时钟
-        var today = new Date(), time = today.getTime();
-        $('#bjui-date').html(today.formatDate('yyyy/MM/dd'));
-        setInterval(function () {
-            today = new Date(today.setSeconds(today.getSeconds() + 1));
-            $('#bjui-clock').html(today.formatDate('HH:mm:ss'))
-        }, 1000)
-    });
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="resource/static/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="resource/static/admin/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="resource/static/admin/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript"
+        src="resource/static/admin/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
-    //菜单-事件-zTree
-    function MainMenuClick(event, treeId, treeNode) {
-        if (treeNode.target && treeNode.target == 'dialog' || treeNode.target == 'navtab')
-            event.preventDefault();
-        if (treeNode.isParent) {
-            var zTree = $.fn.zTree.getZTreeObj(treeId);
-            zTree.expandNode(treeNode);
-            return
-        }
-        if (treeNode.target && treeNode.target == 'dialog')
-            $(event.target).dialog({
-                id: treeNode.targetid, url: treeNode.url, title: treeNode.name
-            });
-        else if (treeNode.target && treeNode.target == 'navtab')
-            $(event.target).navtab({
-                id: treeNode.targetid,
-                url: treeNode.url,
-                title: treeNode.name,
-                fresh: treeNode.fresh,
-                external: treeNode.external
-            });
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="resource/static/admin/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+<script type="text/javascript">
+
+    /*个人信息*/
+    function myselfinfo() {
+        layer.open({
+            type: 1,
+            area: ['300px', '200px'],
+            fix: false, //不固定
+            maxmin: true,
+            shade: 0.4,
+            title: '查看信息',
+            content: '<div>管理员信息</div>'
+        });
     }
 
-    // 满屏开关
-    var bjui_index_container = 'container_fluid'
+    /*资讯-添加*/
+    function article_add(title, url) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
 
-    function bjui_index_exchange() {
-        bjui_index_container = bjui_index_container == 'container_fluid' ? 'container' : 'container_fluid'
-        $('#bjui-top').find('> div').attr('class', bjui_index_container)
-        $('#bjui-navbar').find('> div').attr('class', bjui_index_container)
-        $('#bjui-body-box').find('> div').attr('class', bjui_index_container)
+    /*图片-添加*/
+    function picture_add(title, url) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+
+    /*产品-添加*/
+    function product_add(title, url) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url
+        });
+        layer.full(index);
+    }
+
+    /*用户-添加*/
+    function member_add(title, url, w, h) {
+        layer_show(title, url, w, h);
     }
 </script>
-<!-- highlight && ZeroClipboard -->
-<script src="resource/static/admin/assets/prettify.js"></script>
-<script src="resource/static/admin/assets/ZeroClipboard.js"></script>
+</body>
 </html>
