@@ -15,7 +15,7 @@ class IndexController extends CommonController
         $sql = 'SELECT * FROM `blog_channel`;';
         $data = $this->db->getAll($sql);
         $this->assign(['data' => $data]);
-        $this->display('tpl/default/admin/common/layout.html');
+        $this->display('tpl/default/admin/index/index.html');
     }
 
     public function home() {

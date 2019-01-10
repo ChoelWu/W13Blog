@@ -21,6 +21,7 @@ class ChannelController extends CommonController
 
     public function add() {
 
+        $this->display('tpl/default/admin/channel/add.html');
     }
 
     public function edit() {
