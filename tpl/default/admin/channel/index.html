@@ -17,7 +17,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 栏目列表
-                <button class="btn btn-outline btn-info btn-xs pull-right">添加</button>
+                <a class="btn btn-outline btn-info btn-xs pull-right" href="index.php?g=admin&a=channel&m=add">添加</a>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -45,7 +45,7 @@
                         <td title="<{$channel['channel_summary']}>"><{mb_substr($channel['channel_summary'], 0, 25)}><{if mb_strlen($channel['channel_summary']) > 25}>...<{/if}></td>
                         <td class="center"><{$channel['channel_cover_img']}></td>
                         <td class="center" width="10%">
-                            <button class="btn btn-outline btn-info btn-xs">编辑</button>
+                            <a class="btn btn-outline btn-info btn-xs" href="index.php?g=admin&a=channel&m=edit&id=<{$channel['id']}>">编辑</a>
                             <button class="btn btn-outline btn-danger btn-xs">删除</button>
                         </td>
                     </tr>

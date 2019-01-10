@@ -46,4 +46,34 @@ class Mysql
         mysqli_close($this->con);
         return $data;
     }
+
+    public function setRow($table, $dataArr)
+    {
+        $tableStructure = 'DESC `' . $table . '`';
+        $tableResult = mysqli_query($this->con, $tableStructure);
+        $tableField = mysqli_fetch_all($tableResult, MYSQLI_ASSOC);
+        $value = [];
+        $field = [];
+        echo '<pre>';
+        foreach ($tableField as $t_field) {
+            if (isset($dataArr[$t_field['Field']])) {
+                $count = false;
+                foreach (['int', 'float', 'double'] as $type) {
+                    $count = strpos($t_field['Type'], $type);
+                }
+                if (!$count) {
+                    $value[] = '"' . $dataArr[$t_field['Field']] . '"';
+                }
+            } else {
+                $value[] = 'null';
+            }
+            $field[] = $t_field['Field'];
+        }
+        $fieldStr = implode('`,`', $field);
+        $valueStr = implode(',', $value);
+        $sql = 'INSERT INTO `' . $table . '` (`' . $fieldStr . '`) VALUE(' . $valueStr . ');';
+        $result = mysqli_query($this->con, $sql);
+        mysqli_close($this->con);
+        return $result;
+    }
 }
