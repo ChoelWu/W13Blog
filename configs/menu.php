@@ -2,6 +2,7 @@
 return [
     [
         'name' => '模块管理',
+        'icon' => 'sitemap',
         'children' => [
             [
                 'id' => 'channel-page',
@@ -20,11 +21,13 @@ return [
     [
         'id' => 'article-page',
         'name' => '文章管理',
+        'icon' => 'file-code-o',
         'target' => 'navtab',
         'url' => 'html/base/navtab.html'
     ],
     [
         'name' => '评论管理',
+        'icon' => 'comments-o',
         'children' => [
             [
                 'id' => 'word-page',
@@ -42,6 +45,7 @@ return [
     ],
     [
         'name' => '多媒体管理',
+        'icon' => 'video-camera',
         'children' => [
             [
                 'id' => 'photo-page',
@@ -71,6 +75,7 @@ return [
     ],
     [
         'name' => '博客信息',
+        'icon' => 'info-circle ',
         'children' => [
             [
                 'id' => 'personal-page',
@@ -88,6 +93,7 @@ return [
     ],
     [
         'name' => '备份迁移',
+        'icon' => 'copy',
         'children' => [
             [
                 'id' => 'back-up-page',

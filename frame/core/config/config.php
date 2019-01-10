@@ -11,15 +11,16 @@
  * @param null $default
  * @return null
  */
-function getConfig($configName, $default = null) {
+function getConfig($configName, $default = null)
+{
     $config_box = explode('.', $configName);
-    $config = null;
-    $config_array = include(CONFIG_PATH . '/' . $config_box[0] . '.php');
-    if(count($config_box) == 2) {
-        $config = $config_array[$config_box[1]];
-    } else if(count($config_box) == 3) {
-        $config = $config_array[$config_box[1]][$config_box[2]];
+    $config = include(CONFIG_PATH . '/' . $config_box[0] . '.php');
+    if (count($config_box) > 1) {
+        for ($i = 1; $i < count($config_box); $i++) {
+            $config = $config[$config_box[$i]];
+        }
     }
-    $config = is_null($config) ? $default : $config;
+
+    $config = empty($config) ? $default : $config;
     return $config;
 }

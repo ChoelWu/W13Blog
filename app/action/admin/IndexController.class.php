@@ -12,9 +12,10 @@ class IndexController extends CommonController
 {
     public function index()
     {
-        $sql = 'SELECT * FROM `blog_channel`;';
-        $data = $this->db->getAll($sql);
-        $this->assign(['data' => $data]);
+//        echo '<pre>';
+//        print_r(($this->menu)[0]['name']);
+//        echo '<pre>';
+////        var_dump($this->smarty);
         $this->display('tpl/default/admin/index/index.html');
     }
 
@@ -22,9 +23,9 @@ class IndexController extends CommonController
         $this->display('tpl/default/admin/index/index.html');
     }
 
-    public function getMenu()
-    {
-        $rel = include CONFIG_PATH . '/menu.php';
-        echo json_encode($rel);
-    }
+//    public function getMenu()
+//    {
+//        $rel = include CONFIG_PATH . '/menu.php';
+//        echo json_encode($rel);
+//    }
 }
