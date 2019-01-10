@@ -36,11 +36,11 @@
                             <div class="form-group">
                                 <label>父栏目</label>
                                 <select class="form-control">
-                                    <{foreach from=$channel_list item=channel}>
+                                    <{foreach from=$channelTree item=channel}>
                                         <option value="<{$channel['id']}>"><{$channel['channel_name']}></option>
                                         <{if !empty($channel['children'])}>
                                             <{foreach from=$channel['children'] item=c}>
-                                            <option value="<{$c['id']}>">&nbsp;|-<{$c['channel_name']}></option>
+                                            <option value="<{$c['id']}>">&nbsp;|--&nbsp;<{$c['channel_name']}></option>
                                             <{/foreach}>
                                         <{/if}>
                                     <{/foreach}>
