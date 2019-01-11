@@ -72,19 +72,26 @@ class ChannelController extends CommonController
      */
     public function edit()
     {
-        include APP_PATH . '/function/tree.php';
-        $sql = 'SELECT * FROM `blog_channel`;';
-        $channel_list = $this->db->getAll($sql);
-        $channelTree = getChannelTree($channel_list, 0, 1);
-        $type_list = getConfig('dictionary.channel.type', '未知');
-        $status_list = getConfig('dictionary.common.status', '未知');
-        $this->assign([
-            'type_list' => $type_list,
-            'status_list' => $status_list,
-            'channelTree' => $channelTree
-        ]);
-        $this->display('tpl/default/admin/channel/edit.html');
-        header('location:index.php?g=admin&a=channel&m=index');
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $id = get('id');
+            $channelRow = $this->db->getRow('blog_channel', ['id' => $id]);
+//            var_dump($channel);
+            include APP_PATH . '/function/tree.php';
+            $sql = 'SELECT * FROM `blog_channel`;';
+            $channel_list = $this->db->getAll($sql);
+            $channelTree = getChannelTree($channel_list, 0, 1);
+            $type_list = getConfig('dictionary.channel.type', '未知');
+            $status_list = getConfig('dictionary.common.status', '未知');
+            $this->assign([
+                'type_list' => $type_list,
+                'status_list' => $status_list,
+                'channelTree' => $channelTree,
+                'channelRow' => $channelRow
+            ]);
+            $this->display('tpl/default/admin/channel/edit.html');
+        } else {
+
+        }
     }
 
     /**

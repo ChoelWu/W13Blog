@@ -12,7 +12,7 @@ return [
             ],
             [
                 'id' => 'slider-pic-page',
-                'name' => '轮播图管理',
+                'name' => '推荐位管理',
                 'target' => 'navtab',
                 'url' => 'index.php?g=admin&a=slide_pic'
             ]
@@ -23,7 +23,7 @@ return [
         'name' => '文章管理',
         'icon' => 'file-code-o',
         'target' => 'navtab',
-        'url' => 'html/base/navtab.html'
+        'url' => 'index.php?a=article'
     ],
     [
         'name' => '评论管理',

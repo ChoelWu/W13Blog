@@ -4,7 +4,7 @@
 <{block name='content'}>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">栏目管理</h1>
+        <h1 class="page-header">推荐位管理</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -13,7 +13,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                添加栏目
+                添加推荐位
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -21,14 +21,14 @@
                         <form role="form" action="index.php?g=admin&a=channel&m=add" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>栏目名称</label>
-                                <input class="form-control" name="channel_name" value="<{$channelRow['channel_name']}>">
+                                <input class="form-control" name="channel_name">
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">
                             </div>
                             <div class="form-group">
                                 <label>栏目序号</label>
-                                <input class="form-control" name="channel_index" value="<{$channelRow['channel_index']}>">
+                                <input class="form-control" name="channel_index">
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">
@@ -37,7 +37,7 @@
                                 <label>父栏目</label>
                                 <select class="form-control" name="channel_parent_id">
                                     <{foreach from=$channelTree item=channel}>
-                                        <option value="<{$channel['id']}>" <{if $channel['id'] eq $channelRow['channel_parent_id']}>selected="selected"<{/if}>><{$channel['channel_name']}></option>
+                                        <option value="<{$channel['id']}>"><{$channel['channel_name']}></option>
                                         <{if !empty($channel['children'])}>
                                             <{foreach from=$channel['children'] item=c}>
                                             <option value="<{$c['id']}>">&nbsp;|--&nbsp;<{$c['channel_name']}></option>
@@ -53,7 +53,7 @@
                                 <label>栏目类型</label>
                                 <select class="form-control" name="channel_type">
                                     <{foreach from=$type_list item=type key=type_key}>
-                                    <option value="<{$type_key}>" <{if $type_key eq $channelRow['channel_type']}>selected="selected"<{/if}>><{$type}></option>
+                                    <option value="<{$type_key}>"><{$type}></option>
                                     <{/foreach}>
                                 </select>
                             </div>
@@ -66,7 +66,7 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="channel_status" value="<{$status_key}>" <{if
-                                        $status_key eq $channelRow['channel_status']}>checked<{/if}>><{$status}>
+                                        $status_key eq 1}>checked<{/if}>><{$status}>
                                     </label>
                                 </div>
                                 <{/foreach}>
@@ -76,10 +76,6 @@
                             </div>
                             <div class="form-group">
                                 <label>上传封面</label>
-                                <br>
-                                <label class="col-lg-offset-1 col-lg-11">
-                                    <img src="<{$channelRow['channel_cover_img']}>" width="200">
-                                </label>
                                 <input type="file" name="channel_cover_img">
                             </div>
                             <div class="form-group">
@@ -87,7 +83,7 @@
                             </div>
                             <div class="form-group">
                                 <label>栏目简介</label>
-                                <textarea class="form-control" name="channel_summary" rows="3"><{$channelRow['channel_summary']}></textarea>
+                                <textarea class="form-control" name="channel_summary" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">

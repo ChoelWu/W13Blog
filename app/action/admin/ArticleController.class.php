@@ -8,7 +8,7 @@
 
 include ACTION_PATH . '/CommonController.class.php';
 
-class SlidePicController extends CommonController
+class ArticleController extends CommonController
 {
     /**
      * 列表显示

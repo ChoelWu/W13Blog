@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-01-09 17:04:36
+Date: 2019-01-11 11:45:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,26 +37,26 @@ CREATE TABLE `blog_article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of blog_article
--- ----------------------------
-
--- ----------------------------
 -- Table structure for blog_channel
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_channel`;
 CREATE TABLE `blog_channel` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `channel_name` varchar(100) NOT NULL COMMENT '栏目名称',
+  `channel_parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父栏目id',
+  `channel_level` int(1) NOT NULL DEFAULT '1' COMMENT '栏目级别',
   `channel_index` int(3) NOT NULL COMMENT '栏目序号',
   `channel_type` char(1) NOT NULL DEFAULT '2' COMMENT '栏目类型 1-超链接栏目 2-列表栏目 3-文章栏目 4-轮播图',
+  `channel_status` char(1) DEFAULT '1' COMMENT '栏目状态 1-启用 2-禁用',
   `channel_cover_img` varchar(200) DEFAULT NULL COMMENT '栏目封面图片',
   `channel_summary` varchar(100) DEFAULT NULL COMMENT '栏目简介',
   `updated_time` datetime DEFAULT NULL COMMENT '修改时间',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_channel_name` (`channel_name`),
-  KEY `idx_channel_index` (`channel_index`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  KEY `idx_channel_index` (`channel_index`),
+  KEY `idx_channel_parent_id` (`channel_parent_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for blog_comment
@@ -76,10 +76,6 @@ CREATE TABLE `blog_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of blog_comment
--- ----------------------------
-
--- ----------------------------
 -- Table structure for blog_photo
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_photo`;
@@ -95,10 +91,6 @@ CREATE TABLE `blog_photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of blog_photo
--- ----------------------------
-
--- ----------------------------
 -- Table structure for blog_sensitive_words
 -- ----------------------------
 DROP TABLE IF EXISTS `blog_sensitive_words`;
@@ -110,10 +102,6 @@ CREATE TABLE `blog_sensitive_words` (
   PRIMARY KEY (`id`),
   KEY `idx_sensitive_word` (`sensitive_word`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of blog_sensitive_words
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for blog_slide_pic
@@ -132,7 +120,3 @@ CREATE TABLE `blog_slide_pic` (
   PRIMARY KEY (`id`),
   KEY `idx_slide_pic_title` (`slide_pic_title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of blog_slide_pic
--- ----------------------------
