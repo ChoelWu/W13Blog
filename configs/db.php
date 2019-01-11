@@ -11,8 +11,8 @@ return [
     'db_name' => 'w13blog',
     'db_host' => 'localhost',
     'db_user' => 'root',
-    'db_pwd' => 'Wuc14561013',
-//    'db_pwd' => 'root',
+//    'db_pwd' => 'Wuc14561013',
+    'db_pwd' => 'root',
     'db_prefix' => 'blog_'
 ];
 
