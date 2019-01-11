@@ -36,6 +36,7 @@
                             <div class="form-group">
                                 <label>父栏目</label>
                                 <select class="form-control" name="channel_parent_id">
+                                    <option value="0">顶级栏目</option>
                                     <{foreach from=$channelTree item=channel}>
                                         <option value="<{$channel['id']}>"><{$channel['channel_name']}></option>
                                         <{if !empty($channel['children'])}>

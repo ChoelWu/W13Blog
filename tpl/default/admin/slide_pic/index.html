@@ -48,12 +48,28 @@
                     <{foreach from=$slide_pic_list item=slide_pic key=slide_pic_k}>
                     <tr>
                         <td><{$slide_pic['slide_pic_title']}></td>
-                        <td><{$slide_pic['channel_id']}></td>
+                        <td>
+                            <!--<{if $slide_pic['channel_level'] eq '1'}>-->
+                            <!--&nbsp;|&#45;&#45;&nbsp;<{$slide_pic['channel_id']}>-->
+                            <!--<{/if}>-->
+                        </td>
                         <td class="slide-pic-img">
                             <img src="<{$slide_pic['slide_pic_img']}>" data-img="<{$slide_pic['slide_pic_img']}>" data-toggle="modal" data-target="#myModal" height="30">
                         </td>
-                        <td><span class="label label-default"><{$is_top[$slide_pic['is_top']]}></span></td>
-                        <td><span class="label label-info"><{$status[$slide_pic['slide_pic_status']]}></span></td>
+                        <td>
+                            <{if $slide_pic['is_top'] eq '1'}>
+                            <span class="label label-info"><{$is_top[$slide_pic['is_top']]}></span>
+                            <{else}>
+                            <span class="label label-default"><{$is_top[$slide_pic['is_top']]}></span>
+                            <{/if}>
+                        </td>
+                        <td>
+                            <{if $slide_pic['slide_pic_status'] eq '1'}>
+                            <span class="label label-info"><{$status[$slide_pic['slide_pic_status']]}></span>
+                            <{else}>
+                            <span class="label label-danger"><{$status[$slide_pic['slide_pic_status']]}></span>
+                            <{/if}>
+                        </td>
                         <td><{$slide_pic['slide_pic_summary']}></td>
                         <td class="center" width="10%">
                             <a class="btn btn-outline btn-info btn-xs"

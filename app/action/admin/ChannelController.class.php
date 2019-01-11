@@ -16,6 +16,7 @@ class ChannelController extends CommonController
      */
     public function index()
     {
+        include APP_PATH . '/function/tree.php';
         $sql = 'SELECT * FROM `blog_channel`;';
         $channel_list = $this->db->getAll($sql);
         $type = getConfig('dictionary.channel.type', '未知');
@@ -100,6 +101,10 @@ class ChannelController extends CommonController
     {
         $id = $_GET['id'];
         $this->db->delete('blog_channel', ['id' => $id]);
+        $channelRow = $this->db->getRow('blog_channel', ['channel_parent_id' => $id]);
+        if(count($channelRow) > 0) {
+            echo '存在子栏目，无法删除';
+        }
         header('location:index.php?g=admin&a=channel&m=index');
     }
 

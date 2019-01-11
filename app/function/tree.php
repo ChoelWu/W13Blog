@@ -26,3 +26,17 @@ function getChannelTree($menuArr, $parentId, $level)
 
     return $result_arr;
 }
+
+function getChannelList($menuArr, $parentId, $level)
+{
+    $result = [];
+
+    foreach ($menuArr as $menuItem) {
+        if ($menuItem['channel_parent_id'] == $parentId && $menuItem['channel_level'] == $level) {
+            $result = getChannelList($menuArr, $menuItem['id'], $level + 1);
+            var_dump($result);
+        }
+    }
+
+    return $result;
+}
