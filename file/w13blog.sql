@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-01-11 11:45:37
+Date: 2019-01-11 17:23:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,7 +56,7 @@ CREATE TABLE `blog_channel` (
   KEY `idx_channel_name` (`channel_name`),
   KEY `idx_channel_index` (`channel_index`),
   KEY `idx_channel_parent_id` (`channel_parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for blog_comment
@@ -111,12 +111,12 @@ CREATE TABLE `blog_slide_pic` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `slide_pic_title` varchar(200) NOT NULL COMMENT '轮播图标题',
   `channel_id` int(11) NOT NULL COMMENT '轮播图推送栏目',
-  `slide_pic_url` varchar(200) NOT NULL COMMENT '轮播图链接地址',
   `slide_pic_img` varchar(200) NOT NULL COMMENT '轮播图图片',
   `is_top` char(1) NOT NULL COMMENT '是否置顶',
+  `slide_pic_status` char(1) NOT NULL DEFAULT '1' COMMENT '滚动图状态 1-启用 2-禁用',
   `slide_pic_summary` tinytext NOT NULL COMMENT '轮播图简介',
   `updated_time` datetime DEFAULT NULL COMMENT '修改时间',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_slide_pic_title` (`slide_pic_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
