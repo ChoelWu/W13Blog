@@ -75,7 +75,6 @@ class ChannelController extends CommonController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = get('id');
             $channelRow = $this->db->getRow('blog_channel', ['id' => $id]);
-//            var_dump($channel);
             include APP_PATH . '/function/tree.php';
             $sql = 'SELECT * FROM `blog_channel`;';
             $channel_list = $this->db->getAll($sql);
@@ -101,6 +100,7 @@ class ChannelController extends CommonController
     {
         $id = $_GET['id'];
         $this->db->delete('blog_channel', ['id' => $id]);
+        header('location:index.php?g=admin&a=channel&m=index');
     }
 
     /**
