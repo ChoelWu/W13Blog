@@ -17,10 +17,11 @@ class ChannelController extends CommonController
     public function index()
     {
         include APP_PATH . '/function/tree.php';
-        $sql = 'SELECT * FROM `blog_channel`;';
+        $sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
         $channel_list = $this->db->getAll($sql);
         $type = getConfig('dictionary.channel.type', '未知');
         $status = getConfig('dictionary.common.status', '未知');
+        $channel_list = getChannelTree($channel_list, 0,1);
         $this->assign([
             'channel_list' => $channel_list,
             'type' => $type,

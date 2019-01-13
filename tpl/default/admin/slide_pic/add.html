@@ -18,25 +18,26 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6 col-lg-offset-1">
-                        <form role="form" action="index.php?g=admin&a=channel&m=add" method="POST" enctype="multipart/form-data">
+                        <form role="form" action="index.php?g=admin&a=slide_pic&m=add" method="POST"
+                              enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>栏目名称</label>
-                                <input class="form-control" name="channel_name">
+                                <label>推荐位名称</label>
+                                <input class="form-control" name="slide_pic_title">
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">
                             </div>
                             <div class="form-group">
-                                <label>栏目序号</label>
-                                <input class="form-control" name="channel_index">
+                                <label>推荐位链接</label>
+                                <input class="form-control" name="slide_pic_url">
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">
                             </div>
                             <div class="form-group">
-                                <label>父栏目</label>
-                                <select class="form-control" name="channel_parent_id">
-                                    <{foreach from=$channelTree item=channel}>
+                                <label>推送栏目</label>
+                                <select class="form-control" name="channel_id">
+                                    <{foreach from=$channel_list item=$channel}>
                                         <option value="<{$channel['id']}>"><{$channel['channel_name']}></option>
                                         <{if !empty($channel['children'])}>
                                             <{foreach from=$channel['children'] item=c}>
@@ -50,10 +51,24 @@
                                 <hr style="border: 1px dashed #ccc;">
                             </div>
                             <div class="form-group">
-                                <label>栏目类型</label>
-                                <select class="form-control" name="channel_type">
-                                    <{foreach from=$type_list item=type key=type_key}>
-                                    <option value="<{$type_key}>"><{$type}></option>
+                                <label>推荐位图片</label>
+                                <input type="file" name="slide_pic_img">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>栏目简介</label>
+                                <textarea class="form-control" name="slide_pic_summary" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>是否置顶</label>
+                                <select class="form-control" name="is_top">
+                                    <{foreach from=$is_top_list item=is_top key=is_top_key}>
+                                    <option value="<{$is_top_key}>" <{if $is_top_key eq 2}>selected="selected"<{/if}>><{$is_top}></option>
                                     <{/foreach}>
                                 </select>
                             </div>
@@ -61,29 +76,14 @@
                                 <hr style="border: 1px dashed #ccc;">
                             </div>
                             <div class="form-group">
-                                <label>栏目状态</label>
+                                <label>推荐位状态</label>
                                 <{foreach from=$status_list item=status key=status_key}>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="channel_status" value="<{$status_key}>" <{if
-                                        $status_key eq 1}>checked<{/if}>><{$status}>
+                                        <input type="radio" name="slide_pic_status" value="<{$status_key}>" <{if $status_key eq 1}>checked<{/if}>><{$status}>
                                     </label>
                                 </div>
                                 <{/foreach}>
-                            </div>
-                            <div class="form-group">
-                                <hr style="border: 1px dashed #ccc;">
-                            </div>
-                            <div class="form-group">
-                                <label>上传封面</label>
-                                <input type="file" name="channel_cover_img">
-                            </div>
-                            <div class="form-group">
-                                <hr style="border: 1px dashed #ccc;">
-                            </div>
-                            <div class="form-group">
-                                <label>栏目简介</label>
-                                <textarea class="form-control" name="channel_summary" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <hr style="border: 1px dashed #ccc;">

@@ -54,19 +54,44 @@
                         <td class="center"><{$type[$channel['channel_type']]}></td>
                         <td>
                             <{if $channel['channel_status'] eq '1'}>
-                                <span class="label label-info"><{$status[$channel['channel_status']]}></span></td>
+                                <span class="label label-info"><{$status[$channel['channel_status']]}></span>
                             <{else}>
-                                <span class="label label-danger"><{$status[$channel['channel_status']]}></span></td>
+                                <span class="label label-danger"><{$status[$channel['channel_status']]}></span>
                             <{/if}>
+                        </td>
                         <td title="<{$channel['channel_summary']}>"><{mb_substr($channel['channel_summary'], 0, 25)}><{if mb_strlen($channel['channel_summary']) > 25}>...<{/if}></td>
                         <td class="channel-cover-img">
-                            <img src="<{$channel['channel_cover_img']}>" data-img="<{$channel['channel_cover_img']}>" data-toggle="modal" data-target="#myModal"  height="30">
+                            <img src="<{$channel['channel_cover_img']}>" title="点击查看图片" data-img="<{$channel['channel_cover_img']}>" data-toggle="modal" data-target="#myModal"  height="30">
                         </td>
                         <td class="center" width="10%">
                             <a class="btn btn-outline btn-info btn-xs" href="index.php?g=admin&a=channel&m=edit&id=<{$channel['id']}>">编辑</a>
                             <a class="btn btn-outline btn-danger btn-xs" href="index.php?g=admin&a=channel&m=delete&id=<{$channel['id']}>">删除</a>
                         </td>
                     </tr>
+                    <{if isset($channel['children'])}>
+                        <{foreach from=$channel['children'] item=channel_c key=channel_c_k}>
+                            <tr>
+                                <td><{$channel_c['channel_index']}></td>
+                                <td>&nbsp;|--&nbsp;<{$channel_c['channel_name']}></td>
+                                <td><{$channel_c['channel_parent_id']}></td>
+                                <td class="center"><{$type[$channel_c['channel_type']]}></td>
+                                <td>
+                                    <{if $channel_c['channel_status'] eq '1'}>
+                                        <span class="label label-info"><{$status[$channel_c['channel_status']]}></span></td>
+                                    <{else}>
+                                        <span class="label label-danger"><{$status[$channel_c['channel_status']]}></span></td>
+                                    <{/if}>
+                                <td title="<{$channel_c['channel_summary']}>"><{mb_substr($channel_c['channel_summary'], 0, 25)}><{if mb_strlen($channel_c['channel_summary']) > 25}>...<{/if}></td>
+                                <td class="channel-cover-img">
+                                    <img src="<{$channel_c['channel_cover_img']}>" title="点击查看图片" data-img="<{$channel_c['channel_cover_img']}>" data-toggle="modal" data-target="#myModal"  height="30">
+                                </td>
+                                <td class="center" width="10%">
+                                    <a class="btn btn-outline btn-info btn-xs" href="index.php?g=admin&a=channel&m=edit&id=<{$channel_c['id']}>">编辑</a>
+                                    <a class="btn btn-outline btn-danger btn-xs" href="index.php?g=admin&a=channel&m=delete&id=<{$channel_c['id']}>">删除</a>
+                                </td>
+                            </tr>
+                        <{/foreach}>
+                    <{/if}>
                     <{/foreach}>
                     </tbody>
                 </table>
@@ -86,7 +111,8 @@
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            responsive: true,
+            ordering: false
         });
         $(".channel-cover-img").find("img").click(function () {
             let img = $(this).data("img");

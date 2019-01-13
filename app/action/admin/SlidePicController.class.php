@@ -16,7 +16,7 @@ class SlidePicController extends CommonController
      */
     public function index()
     {
-        $sql = 'SELECT * FROM `blog_slide_pic`;';
+        $sql = 'SELECT a.*, b.channel_name FROM `blog_slide_pic` as a, `blog_channel` as b WHERE a.channel_id=b.id;';
         $slide_pic_list = $this->db->getAll($sql);
         $status = getConfig('dictionary.common.status', '未知');
         $is_top = getConfig('dictionary.slide_pic.is_top', '未知');
@@ -35,9 +35,28 @@ class SlidePicController extends CommonController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $this->display('tpl/default/admin/channel/add.html');
+            $status_list = getConfig('dictionary.common.status', '未知');
+            $is_top_list = getConfig('dictionary.slide_pic.is_top', '未知');
+
+            $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
+            $channel_list = $this->db->getAll($channel_sql);
+            include APP_PATH . '/function/tree.php';
+            $channel_list = getChannelTree($channel_list, 0,1);
+            $this->assign([
+                'status_list' => $status_list,
+                'is_top_list' => $is_top_list,
+                'channel_list' => $channel_list
+            ]);
+            $this->display('tpl/default/admin/slide_pic/add.html');
         } else {
             $data = $_POST;
+            if ($_FILES['slide_pic_img']['error'] == 0) {
+                $uploadRel = $this->uploadSlidePicImg($_FILES['slide_pic_img']);
+                if ($uploadRel) {
+                    $data['slide_pic_img'] = $uploadRel;
+                }
+            }
+            $this->db->setRow('blog_slide_pic', $data);
             header('location:index.php?g=admin&a=slide_pic&m=index');
         }
     }
@@ -50,8 +69,23 @@ class SlidePicController extends CommonController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = get('id');
+            $slide_pic_row = $this->db->getRow('blog_slide_pic',['id' => $id]);
+            $status_list = getConfig('dictionary.common.status', '未知');
+            $is_top_list = getConfig('dictionary.slide_pic.is_top', '未知');
+
+            $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
+            $channel_list = $this->db->getAll($channel_sql);
+            include APP_PATH . '/function/tree.php';
+            $channel_list = getChannelTree($channel_list, 0,1);
+            $this->assign([
+                'status_list' => $status_list,
+                'is_top_list' => $is_top_list,
+                'channel_list' => $channel_list,
+                'slide_pic_row' => $slide_pic_row
+            ]);
             $this->display('tpl/default/admin/slide_pic/edit.html');
         } else {
+            $data = $_POST;
             header('location:index.php?g=admin&a=slide_pic&m=index');
         }
     }
@@ -63,6 +97,7 @@ class SlidePicController extends CommonController
     {
         $id = $_GET['id'];
         $this->db->delete('blog_slide_pic', ['id' => $id]);
+        header('location:index.php?g=admin&a=slide_pic&m=index');
     }
 
     /**
@@ -70,7 +105,7 @@ class SlidePicController extends CommonController
      * @param $file
      * @return bool|string
      */
-    public function uploadCoverImg($file)
+    public function uploadSlidePicImg($file)
     {
         if (file_exists($file['tmp_name'])) {
             $path = 'upload/' . $file['name'];
