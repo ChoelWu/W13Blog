@@ -77,9 +77,9 @@
                                 <td class="center"><{$type[$channel_c['channel_type']]}></td>
                                 <td>
                                     <{if $channel_c['channel_status'] eq '1'}>
-                                        <span class="label label-info"><{$status[$channel_c['channel_status']]}></span></td>
+                                        <span class="label label-info"><{$status[$channel_c['channel_status']]}></span>
                                     <{else}>
-                                        <span class="label label-danger"><{$status[$channel_c['channel_status']]}></span></td>
+                                        <span class="label label-danger"><{$status[$channel_c['channel_status']]}></span>
                                     <{/if}>
                                 <td title="<{$channel_c['channel_summary']}>"><{mb_substr($channel_c['channel_summary'], 0, 25)}><{if mb_strlen($channel_c['channel_summary']) > 25}>...<{/if}></td>
                                 <td class="channel-cover-img">
