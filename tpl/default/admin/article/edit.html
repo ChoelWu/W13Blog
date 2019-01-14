@@ -1,0 +1,180 @@
+<{extends file='tpl/default/admin/common/layout.html'}>
+<{block name='header'}>
+<link rel="stylesheet" href="resource/static/admin/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css">
+<{/block}>
+<{block name='content'}>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">文章管理</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                修改文章
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <form role="form" action="index.php?g=admin&a=article&m=add" method="POST"
+                              enctype="multipart/form-data">
+                            <div class="form-group col-lg-6">
+                                <label>文章标题</label>
+                                <input class="form-control" name="article_title" value="<{$article['article_title']}>">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>文章标签</label>
+                                <input class="form-control" name="article_tag" value="<{$article['article_tag']}>">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>所属栏目</label>
+                                <select class="form-control" name="channel_id">
+                                    <option value="0">选择栏目</option>
+                                    <{foreach from=$channel_list item=channel}>
+                                    <option value="<{$channel['id']}>"><{$channel['channel_name']}></option>
+                                    <{if !empty($channel['children'])}>
+                                    <{foreach from=$channel['children'] item=c}>
+                                    <option value="<{$c['id']}>">&nbsp;|--&nbsp;<{$c['channel_name']}></option>
+                                    <{/foreach}>
+                                    <{/if}>
+                                    <{/foreach}>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>文章分类</label>
+                                <select class="form-control" name="article_category">
+                                    <option value="0">选择分类</option>
+                                    <{foreach from=$category_list item=category key=category_key}>
+                                    <option value="<{$category_key}>"><{$category}></option>
+                                    <{/foreach}>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>文章类型</label>
+                                <select class="form-control" name="article_type">
+                                    <option value="0">选择类型</option>
+                                    <{foreach from=$type_list item=type key=type_key}>
+                                    <option value="<{$type_key}>"><{$type}></option>
+                                    <{/foreach}>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>文章内容</label>
+                                <textarea class="form-control" id='editor' name="article_content"><{$article['article_content']}></textarea>
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>文章简介</label>
+                                <textarea class="form-control" name="article_summary" rows="3"><{$article['article_summary']}></textarea>
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label>上传封面</label>
+                                <input type="file" name="article_cover_img">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否置顶</label>
+                                <{foreach from=$is_top_list item=is_top key=is_top_key}>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="is_top" value="<{$is_top_key}>" <{if $is_top_key eq $article['is_top']}>checked<{/if}>><{$is_top}>
+                                    </label>
+                                </div>
+                                <{/foreach}>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>栏目状态</label>
+                                <{foreach from=$status_list item=status key=status_key}>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="article_status" value="<{$status_key}>" <{if $status_key eq $article['article_status']}>checked<{/if}>><{$status}>
+                                    </label>
+                                </div>
+                                <{/foreach}>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>私密类型</label>
+                                <{foreach from=$is_secret_list item=is_secret key=is_secret_key}>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="is_secret" value="<{$is_secret_key}>" <{if $is_secret_key eq $article['is_secret']}>checked<{/if}>><{$is_secret}>
+                                    </label>
+                                </div>
+                                <{/foreach}>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <button type="submit" class="btn btn-info">提交</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<{/block}>
+<{block name='footer'}>
+<script src="resource/static/admin/vendor/bootstrap-markdown/js/markdown.min.js"></script>
+<script src="resource/static/admin/vendor/bootstrap-markdown/js/bootstrap-markdown.min.js"></script>
+<script>
+    (function ($) {
+        $.fn.markdown.messages.zh = {
+            'Bold': "粗体",
+            'Italic': "斜体",
+            'Heading': "标题",
+            'URL/Link': "链接",
+            'Image': "图片",
+            'List': "列表",
+            'Unordered List': "无序列表",
+            'Ordered List': "有序列表",
+            'Code': "代码",
+            'Quote': "引用",
+            'Preview': "预览",
+            'strong text': "粗体",
+            'emphasized text': "强调",
+            'heading text': "标题",
+            'enter link description here': "输入链接说明",
+            'Insert Hyperlink': "URL地址",
+            'enter image description here': "输入图片说明",
+            'Insert Image Hyperlink': "图片URL地址",
+            'enter image title here': "在这里输入图片标题",
+            'list text here': "这里是列表文本",
+            'code text here': "这里输入代码",
+            'quote here': "这里输入引用文本"
+        };
+    }(jQuery));
+    //初始化编辑器
+    $("#editor").markdown({
+        autofocus: true,
+        language: 'zh',
+        focus: false,
+        height:600,
+    })
+</script>
+<{/block}>

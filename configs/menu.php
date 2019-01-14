@@ -8,13 +8,13 @@ return [
                 'id' => 'channel-page',
                 'name' => '栏目管理',
                 'target' => 'navtab',
-                'url' => 'index.php?g=admin&a=channel'
+                'url' => 'index.php?a=channel'
             ],
             [
                 'id' => 'slider-pic-page',
                 'name' => '推荐位管理',
                 'target' => 'navtab',
-                'url' => 'index.php?g=admin&a=slide_pic'
+                'url' => 'index.php?a=slide_pic'
             ]
         ]
     ],
@@ -33,7 +33,7 @@ return [
                 'id' => 'word-page',
                 'name' => '敏感词管理',
                 'target' => 'navtab',
-                'url' => 'html/base/navtab.html'
+                'url' => 'index.php?a=comment'
             ],
             [
                 'id' => 'comment-page',
