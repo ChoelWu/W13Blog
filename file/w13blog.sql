@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-01-11 17:23:47
+Date: 2019-01-14 18:20:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,18 +23,20 @@ CREATE TABLE `blog_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `article_title` varchar(200) NOT NULL COMMENT '文章标题',
   `channel_id` int(11) NOT NULL COMMENT '文章推送栏目',
+  `article_category` char(1) NOT NULL COMMENT '文章分类 1-JAVA 2-PHP ...',
+  `article_content` longtext COMMENT '文章内容',
   `article_cover_img` varchar(200) NOT NULL COMMENT '封面图片',
+  `article_tag` varchar(200) NOT NULL COMMENT '文章标签',
+  `article_summary` tinytext COMMENT '文章简介',
   `is_top` char(1) NOT NULL COMMENT '是否置顶',
   `is_secret` char(1) NOT NULL COMMENT '私密类型 1-私密文章 2-公开文章',
   `article_status` char(1) NOT NULL COMMENT '文章状态 1-已发布 2-未发布',
   `article_type` char(1) NOT NULL COMMENT '文章类型 1-原创 2-转载 3-翻译',
-  `article_category` char(1) NOT NULL COMMENT '文章分类 1-JAVA 2-PHP ...',
-  `articel_tags` varchar(200) NOT NULL COMMENT '文章标签',
   `updated_time` datetime DEFAULT NULL COMMENT '修改时间',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_channel_id` (`channel_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for blog_channel
@@ -110,6 +112,7 @@ DROP TABLE IF EXISTS `blog_slide_pic`;
 CREATE TABLE `blog_slide_pic` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `slide_pic_title` varchar(200) NOT NULL COMMENT '轮播图标题',
+  `slide_pic_url` varchar(200) DEFAULT NULL COMMENT '推荐位链接地址',
   `channel_id` int(11) NOT NULL COMMENT '轮播图推送栏目',
   `slide_pic_img` varchar(200) NOT NULL COMMENT '轮播图图片',
   `is_top` char(1) NOT NULL COMMENT '是否置顶',
@@ -119,4 +122,4 @@ CREATE TABLE `blog_slide_pic` (
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_slide_pic_title` (`slide_pic_title`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
