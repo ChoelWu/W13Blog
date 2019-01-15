@@ -1,15 +1,136 @@
 <{extends file='tpl/default/admin/common/layout.html'}>
-<{block name='header'}><{/block}>
+<{block name='header'}>
+<!-- DataTables CSS -->
+<link href="resource/static/admin/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="resource/static/admin/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+<{/block}>
 <{block name='content'}>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Dashboard</h1>
+        <h1 class="page-header">个人信息（简历）</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" width="100%">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <div class="row">
-    123
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                个人信息（简历）
+                <a class="btn btn-outline btn-info btn-xs pull-right" href="index.php?g=admin&a=channel&m=add">添加</a>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-1">
+                        <form role="form" action="index.php?g=admin&a=channel&m=add" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>姓名</label>
+                                <input class="form-control" name="channel_name" value="<{$user_info['name']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>专业</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['major']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>座右铭</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['motto']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>工作状态</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['status']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>能力</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['ability']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>爱好</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['hobby']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>履历</label>
+                                <input class="form-control" name="channel_index" value="<{$user_info['experience']}>">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>个人简介</label>
+                                <textarea class="form-control" name="channel_summary" rows="3"><{$user_info['introduction']}></textarea>
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <div class="form-group">
+                                <label>头像</label>
+                                <br>
+                                <label class="col-lg-offset-1 col-lg-11">
+                                    <img src="<{$user_info['photo']}>" alt="" width="200">
+                                </label>
+                                <input type="file" name="channel_cover_img">
+                            </div>
+                            <div class="form-group">
+                                <hr style="border: 1px dashed #ccc;">
+                            </div>
+                            <button type="submit" class="btn btn-info">提交</button>
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
 </div>
 <{/block}>
-<{block name='footer'}><{/block}>
+<{block name='footer'}>
+<!-- DataTables JavaScript -->
+<script src="resource/static/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="resource/static/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="resource/static/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            ordering: false
+        });
+        $(".channel-cover-img").find("img").click(function () {
+            let img = $(this).data("img");
+            $("#myModal").find(".modal-body img").attr("src", img);
+        });
+    });
+</script>
+<{/block}>

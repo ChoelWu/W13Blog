@@ -15,11 +15,11 @@ class BlogInfoController extends CommonController
         $this->assign([
             'blog_info' => $blog_info
         ]);
-        $this->display('tpl/default/admin/index/index.html');
+        $this->display('tpl/default/admin/blog_info/index.html');
     }
 
     public function home()
     {
-        $this->display('tpl/default/admin/index/index.html');
+        $this->display('tpl/default/admin/blog_info/index.html');
     }
 }

@@ -81,13 +81,13 @@ return [
                 'id' => 'personal-page',
                 'name' => '个人信息（简历）',
                 'target' => 'navtab',
-                'url' => 'index.php?g=admin&a=blog_info'
+                'url' => 'index.php?g=admin&a=user_info'
             ],
             [
                 'id' => 'blog-page',
                 'name' => '博客信息',
                 'target' => 'navtab',
-                'url' => 'index.php?g=admin&a=user_info'
+                'url' => 'index.php?g=admin&a=blog_info'
             ]
         ]
     ],

@@ -16,15 +16,8 @@ class CommentController extends CommonController
      */
     public function index()
     {
-        include APP_PATH . '/function/tree.php';
-        $sql = 'SELECT * FROM `blog_comment`;';
-        $comment_list = $this->db->getAll($sql);
-        $type = getConfig('dictionary.comment.type', '未知');
-        $status = getConfig('dictionary.common.status', '未知');
-        $comment_list = getCommentTree($comment_list, 0,1);
+        $status = getConfig('dictionary.comment.status', '未知');
         $this->assign([
-            'comment_list' => $comment_list,
-            'type' => $type,
             'status' => $status
         ]);
         $this->display('tpl/default/admin/comment/index.html');

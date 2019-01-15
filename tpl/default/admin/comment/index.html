@@ -68,30 +68,6 @@
                             <a class="btn btn-outline btn-danger btn-xs" href="index.php?g=admin&a=comment&m=delete&id=<{$comment['id']}>">删除</a>
                         </td>
                     </tr>
-                    <{if isset($comment['children'])}>
-                        <{foreach from=$comment['children'] item=comment_c key=comment_c_k}>
-                            <tr>
-                                <td><{$comment_c['comment_index']}></td>
-                                <td>&nbsp;|--&nbsp;<{$comment_c['comment_name']}></td>
-                                <td><{$comment_c['comment_parent_id']}></td>
-                                <td class="center"><{$type[$comment_c['comment_type']]}></td>
-                                <td>
-                                    <{if $comment_c['comment_status'] eq '1'}>
-                                        <span class="label label-info"><{$status[$comment_c['comment_status']]}></span>
-                                    <{else}>
-                                        <span class="label label-danger"><{$status[$comment_c['comment_status']]}></span>
-                                    <{/if}>
-                                <td title="<{$comment_c['comment_summary']}>"><{mb_substr($comment_c['comment_summary'], 0, 25)}><{if mb_strlen($comment_c['comment_summary']) > 25}>...<{/if}></td>
-                                <td class="comment-cover-img">
-                                    <img src="<{$comment_c['comment_cover_img']}>" title="点击查看图片" data-img="<{$comment_c['comment_cover_img']}>" data-toggle="modal" data-target="#myModal"  height="30">
-                                </td>
-                                <td class="center" width="10%">
-                                    <a class="btn btn-outline btn-info btn-xs" href="index.php?g=admin&a=comment&m=edit&id=<{$comment_c['id']}>">编辑</a>
-                                    <a class="btn btn-outline btn-danger btn-xs" href="index.php?g=admin&a=comment&m=delete&id=<{$comment_c['id']}>">删除</a>
-                                </td>
-                            </tr>
-                        <{/foreach}>
-                    <{/if}>
                     <{/foreach}>
                     </tbody>
                 </table>
