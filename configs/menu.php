@@ -33,7 +33,7 @@ return [
                 'id' => 'word-page',
                 'name' => '敏感词管理',
                 'target' => 'navtab',
-                'url' => 'index.php?g=admin&a=comment'
+                'url' => 'index.php?g=admin&a=sensitive_word'
             ],
             [
                 'id' => 'comment-page',
@@ -81,13 +81,13 @@ return [
                 'id' => 'personal-page',
                 'name' => '个人信息（简历）',
                 'target' => 'navtab',
-                'url' => 'html/base/navtab.html'
+                'url' => 'index.php?g=admin&a=blog_info'
             ],
             [
                 'id' => 'blog-page',
                 'name' => '博客信息',
                 'target' => 'navtab',
-                'url' => 'html/base/dialog.html'
+                'url' => 'index.php?g=admin&a=user_info'
             ]
         ]
     ],
