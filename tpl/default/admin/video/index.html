@@ -8,7 +8,7 @@
 <{block name='content'}>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">栏目管理</h1>
+        <h1 class="page-header">视频</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -27,24 +27,24 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                栏目列表
-                <a class="btn btn-outline btn-info btn-xs pull-right" href="index.php?g=admin&a=photo&m=add">上传</a>
+                视频列表
+                <a class="btn btn-outline btn-info btn-xs pull-right" href="index.php?g=admin&a=video&m=add">上传</a>
             </div>
             <div class="panel-body">
-                <{foreach from=$photo_list item=photo key=photo_k}>
+                <{foreach from=$video_list item=video key=video_k}>
                 <div class="col-lg-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Default Panel
                         </div>
-                        <div class="panel-body photo-img">
-                            <img src="<{$photo['media_path']}>" alt="..." class="img-thumbnail" title="点击查看图片" data-img="<{$photo['media_path']}>" data-toggle="modal" data-target="#myModal">
+                        <div class="panel-body video-img">
+                            <img src="<{$video['media_path']}>" alt="..." class="img-thumbnail" title="点击查看图片" data-img="<{$video['media_path']}>" data-toggle="modal" data-target="#myModal">
                         </div>
                         <div class="panel-footer">
                             <button type="button" class="btn btn-info btn-circle" title="点击下载"><i class="fa fa-download"></i></button>
-                            <button type="button" class="btn btn-success btn-circle photo-btn" title="点击查看图片" data-img="<{$photo['media_path']}>" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-success btn-circle video-btn" title="点击查看图片" data-img="<{$video['media_path']}>" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
                             <button type="button" class="btn btn-default btn-circle" title="生成引用链接"><i class="fa fa-link"></i></button>
-                            <a class="btn btn-danger btn-circle" href="index.php?g=admin&a=photo&m=delete&id=<{$photo['id']}>" title="移动至回收站"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-danger btn-circle" href="index.php?g=admin&a=video&m=delete&id=<{$video['id']}>" title="移动至回收站"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
@@ -65,11 +65,11 @@
             responsive: true,
             ordering: false
         });
-        $(".photo-img").find("img").click(function () {
+        $(".video-img").find("img").click(function () {
             let img = $(this).data("img");
             $("#myModal").find(".modal-body img").attr("src", img);
         });
-        $(".photo-btn").click(function () {
+        $(".video-btn").click(function () {
             let img = $(this).data("img");
             $("#myModal").find(".modal-body img").attr("src", img);
         });

@@ -16,12 +16,12 @@ class MaterialController extends MediaController
      */
     public function index()
     {
-        $sql = 'SELECT * FROM `blog_media` WHERE `media_type`="1";';
-        $photo_list = $this->db->getAll($sql);
+        $sql = 'SELECT * FROM `blog_media` WHERE `media_type`="3";';
+        $material_list = $this->db->getAll($sql);
         $this->assign([
-            'photo_list' => $photo_list
+            'material_list' => $material_list
         ]);
-        $this->display('tpl/default/admin/photo/index.html');
+        $this->display('tpl/default/admin/material/index.html');
     }
 
     /**
@@ -31,10 +31,10 @@ class MaterialController extends MediaController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $this->display('tpl/default/admin/photo/add.html');
+            $this->display('tpl/default/admin/material/add.html');
         } else {
             if ($_FILES['media_path']['error'] == 0) {
-                $uploadRel = $this->uploadPhoto($_FILES['media_path']);
+                $uploadRel = $this->uploadMaterial($_FILES['media_path']);
                 if ($uploadRel) {
                     $data['media_path'] = $uploadRel;
                 }
@@ -42,9 +42,9 @@ class MaterialController extends MediaController
             $file_extension_arr = explode('.', $_FILES['media_path']['name']);
             $file_extension_arr_size = count($file_extension_arr);
             $data['media_extension'] = $file_extension_arr[$file_extension_arr_size - 1];
-            $data['media_type'] = '1';
+            $data['media_type'] = '3';
             $this->db->setRow('blog_media', $data);
-            header('location:index.php?g=admin&a=photo&m=index');
+            header('location:index.php?g=admin&a=material&m=index');
         }
     }
 
@@ -54,8 +54,8 @@ class MaterialController extends MediaController
     public function delete()
     {
         $id = $_GET['id'];
-        $this->db->updateRow('blog_media', ['media_type' => '4', 'media_origin_type' => '1'], ['id' => $id]);
-        header('location:index.php?g=admin&a=photo&m=index');
+        $this->db->updateRow('blog_media', ['media_type' => '4', 'media_origin_type' => '3'], ['id' => $id]);
+        header('location:index.php?g=admin&a=material&m=index');
     }
 
     /**
@@ -63,7 +63,7 @@ class MaterialController extends MediaController
      * @param $file
      * @return bool|string
      */
-    public function uploadPhoto($file)
+    public function uploadMaterial($file)
     {
         if (file_exists($file['tmp_name'])) {
             $path = 'upload/' . $file['name'];
