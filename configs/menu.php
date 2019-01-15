@@ -8,13 +8,13 @@ return [
                 'id' => 'channel-page',
                 'name' => '栏目管理',
                 'target' => 'navtab',
-                'url' => 'index.php?a=channel'
+                'url' => 'index.php?g=admin&a=channel'
             ],
             [
                 'id' => 'slider-pic-page',
                 'name' => '推荐位管理',
                 'target' => 'navtab',
-                'url' => 'index.php?a=slide_pic'
+                'url' => 'index.php?g=admin&a=slide_pic'
             ]
         ]
     ],
@@ -23,7 +23,7 @@ return [
         'name' => '文章管理',
         'icon' => 'file-code-o',
         'target' => 'navtab',
-        'url' => 'index.php?a=article'
+        'url' => 'index.php?g=admin&a=article'
     ],
     [
         'name' => '评论管理',
@@ -33,13 +33,13 @@ return [
                 'id' => 'word-page',
                 'name' => '敏感词管理',
                 'target' => 'navtab',
-                'url' => 'index.php?a=comment'
+                'url' => 'index.php?g=admin&a=comment'
             ],
             [
                 'id' => 'comment-page',
                 'name' => '评论管理',
                 'target' => 'navtab',
-                'url' => 'html/base/dialog.html'
+                'url' => 'index.php?g=admin&a=comment'
             ]
         ]
     ],
@@ -51,25 +51,25 @@ return [
                 'id' => 'photo-page',
                 'name' => '相册',
                 'target' => 'navtab',
-                'url' => 'html/base/navtab.html'
+                'url' => 'index.php?g=admin&a=photo'
             ],
             [
-                'id' => 'vedio-page',
+                'id' => 'video-page',
                 'name' => '视频',
                 'target' => 'navtab',
-                'url' => 'html/base/dialog.html'
+                'url' => 'index.php?g=admin&a=video'
             ],
             [
                 'id' => 'material-page',
                 'name' => '素材',
                 'target' => 'navtab',
-                'url' => 'html/base/dialog.html'
+                'url' => 'index.php?g=admin&a=material'
             ],
             [
                 'id' => 'trash-page',
                 'name' => '回收站',
                 'target' => 'navtab',
-                'url' => 'html/base/dialog.html'
+                'url' => 'index.php?g=admin&a=trash'
             ]
         ]
     ],

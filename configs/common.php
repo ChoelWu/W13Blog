@@ -7,5 +7,5 @@
  */
 
 return [
-    'default_group' => 'admin'
+    'default_group' => 'index'
 ];

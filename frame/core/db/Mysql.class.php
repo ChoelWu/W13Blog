@@ -85,34 +85,34 @@ class Mysql
      */
     public function setRow($table, $dataArr)
     {
-            $tableStructure = 'DESC `' . $table . '`';
-            $tableResult = mysqli_query($this->con, $tableStructure);
-            $tableField = mysqli_fetch_all($tableResult, MYSQLI_ASSOC);
-            $value = [];
-            $field = [];
-            echo '<pre>';
-            foreach ($tableField as $t_field) {
-                if (isset($dataArr[$t_field['Field']])) {
-                    $count = false;
-                    foreach (['int', 'float', 'double'] as $type) {
-                        $count = strpos($t_field['Type'], $type);
-                    }
-                    if (!$count) {
-                        $value[] = '"' . $dataArr[$t_field['Field']] . '"';
-                    }
-                } else {
-                    $value[] = 'null';
+        $tableStructure = 'DESC `' . $table . '`';
+        $tableResult = mysqli_query($this->con, $tableStructure);
+        $tableField = mysqli_fetch_all($tableResult, MYSQLI_ASSOC);
+        $value = [];
+        $field = [];
+        echo '<pre>';
+        foreach ($tableField as $t_field) {
+            if (isset($dataArr[$t_field['Field']])) {
+                $count = false;
+                foreach (['int', 'float', 'double'] as $type) {
+                    $count = strpos($t_field['Type'], $type);
                 }
-                $field[] = $t_field['Field'];
+                if (!$count) {
+                    $value[] = '"' . $dataArr[$t_field['Field']] . '"';
+                }
+            } else {
+                $value[] = 'null';
             }
-            $fieldStr = implode('`,`', $field);
-            $valueStr = implode(',', $value);
-            $sql = 'INSERT INTO `' . $table . '` (`' . $fieldStr . '`) VALUE(' . $valueStr . ');';
-            $result = mysqli_query($this->con, $sql);
-            if(!$result) {
-                die('MYSQL ERROR:' . mysqli_errno($this->con) . mysqli_error($this->con));
-            }
-            return $result;
+            $field[] = $t_field['Field'];
+        }
+        $fieldStr = implode('`,`', $field);
+        $valueStr = implode(',', $value);
+        $sql = 'INSERT INTO `' . $table . '` (`' . $fieldStr . '`) VALUE(' . $valueStr . ');';
+        $result = mysqli_query($this->con, $sql);
+        if (!$result) {
+            die('MYSQL ERROR:' . mysqli_errno($this->con) . mysqli_error($this->con));
+        }
+        return $result;
     }
 
     /**
@@ -129,6 +129,24 @@ class Mysql
         } while (next($where));
         $whereStr = implode(' AND ', $whereArr);
         $sql = 'DELETE FROM `' . $table . '` WHERE ' . $whereStr . ';';
+        $result = mysqli_query($this->con, $sql);
+        return $result;
+    }
+
+    public function updateRow($table, $data, $where)
+    {
+        $where_arr = [];
+        $value_arr = [];
+        foreach ($where as $key => $w_item) {
+            $where_arr[] = '`' . $key . '`=' . $w_item;
+        }
+        foreach ($data as $key => $d_item) {
+            $value_arr[] = '`' . $key . '`=' . $d_item;
+        }
+        $where_sql = implode(' AND ', $where_arr);
+        $value_sql = implode(',', $value_arr);
+        $sql = 'UPDATE `' . $table . '` SET ' . $value_sql . ' WHERE ' . $where_sql . ';';
+        var_dump($sql);
         $result = mysqli_query($this->con, $sql);
         return $result;
     }

@@ -5,8 +5,6 @@
  * Date: 2019/1/8
  * Time: 9:26
  */
-namespace app\action\admin;
-
 include ACTION_PATH . '/CommonController.class.php';
 
 class IndexController extends CommonController

@@ -1,0 +1,78 @@
+<{extends file='tpl/default/admin/common/layout.html'}>
+<{block name='header'}>
+<!-- DataTables CSS -->
+<link href="resource/static/admin/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="resource/static/admin/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+<{/block}>
+<{block name='content'}>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">栏目管理</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" width="100%">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                栏目列表
+                <a class="btn btn-outline btn-info btn-xs pull-right" href="index.php?g=admin&a=photo&m=add">上传</a>
+            </div>
+            <div class="panel-body">
+                <{foreach from=$photo_list item=photo key=photo_k}>
+                <div class="col-lg-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Default Panel
+                        </div>
+                        <div class="panel-body photo-img">
+                            <img src="<{$photo['media_path']}>" alt="..." class="img-thumbnail" title="点击查看图片" data-img="<{$photo['media_path']}>" data-toggle="modal" data-target="#myModal">
+                        </div>
+                        <div class="panel-footer">
+                            <button type="button" class="btn btn-info btn-circle" title="点击下载"><i class="fa fa-download"></i></button>
+                            <button type="button" class="btn btn-success btn-circle photo-btn" title="点击查看图片" data-img="<{$photo['media_path']}>" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-default btn-circle" title="生成引用链接"><i class="fa fa-link"></i></button>
+                            <a class="btn btn-danger btn-circle" href="index.php?g=admin&a=photo&m=delete&id=<{$photo['id']}>" title="移动至回收站"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <{/foreach}>
+            </div>
+        </div>
+    </div>
+</div>
+<{/block}>
+<{block name='footer'}>
+<!-- DataTables JavaScript -->
+<script src="resource/static/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="resource/static/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="resource/static/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            ordering: false
+        });
+        $(".photo-img").find("img").click(function () {
+            let img = $(this).data("img");
+            $("#myModal").find(".modal-body img").attr("src", img);
+        });
+        $(".photo-btn").click(function () {
+            let img = $(this).data("img");
+            $("#myModal").find(".modal-body img").attr("src", img);
+        });
+    });
+</script>
+<{/block}>
