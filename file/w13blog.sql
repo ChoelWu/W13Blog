@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-01-14 18:20:39
+Date: 2019-01-16 08:44:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,19 +78,20 @@ CREATE TABLE `blog_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for blog_photo
+-- Table structure for blog_media
 -- ----------------------------
-DROP TABLE IF EXISTS `blog_photo`;
-CREATE TABLE `blog_photo` (
+DROP TABLE IF EXISTS `blog_media`;
+CREATE TABLE `blog_media` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `media_path` varchar(200) NOT NULL COMMENT '多媒体路径',
   `media_extension` varchar(5) NOT NULL COMMENT '文件扩展名',
   `media_type` char(1) NOT NULL COMMENT '多媒体类型 1-照片 2-视频 3-素材 4-垃圾箱',
+  `media_origin_type` char(1) DEFAULT '0' COMMENT '删除之前的类型',
   `updated_time` datetime DEFAULT NULL COMMENT '修改时间',
   `created_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`),
   KEY `idx_media_extension` (`media_extension`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for blog_sensitive_words
