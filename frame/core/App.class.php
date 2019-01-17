@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | Created by PhpStorm.
 // +----------------------------------------------------------------------
-// | File: base.php
+// | File: App.class.php
 // +----------------------------------------------------------------------
 // | Date: 2019/1/17
 // +----------------------------------------------------------------------
@@ -11,7 +11,15 @@
 
 namespace frame\core;
 
-class Controller
+class App
 {
-
+    public static function run()
+    {
+        $request = new Request();
+        $request->create();
+//        $request->pathInfo();
+        echo '<pre>';
+        var_dump($request);
+        echo '<pre>';
+    }
 }

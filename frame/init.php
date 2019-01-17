@@ -12,3 +12,5 @@
 namespace frame;
 
 include 'base.php';
+
+core\App::run();
