@@ -9,7 +9,9 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include ACTION_PATH . '/CommonController.class.php';
+namespace app\action\admin;
+
+use app\action\CommonController;
 
 class BlogInfoController extends CommonController
 {

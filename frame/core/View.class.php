@@ -11,7 +11,14 @@
 
 namespace frame\core;
 
+include FRAME_PATH . '/smarty/libs/Smarty.class.php';
+
 class View
 {
+    public $smarty;
 
+    public function __construct()
+    {
+        $smarty = new \Smarty();
+    }
 }

@@ -9,7 +9,9 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include ACTION_PATH . '/admin/MediaController.class.php';
+namespace app\action\admin;
+
+use app\action\CommonController;
 
 class MaterialController extends MediaController
 {

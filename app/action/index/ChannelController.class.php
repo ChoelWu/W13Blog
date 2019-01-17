@@ -9,7 +9,10 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include ACTION_PATH . '/CommonController.class.php';
+namespace app\action\index;
+
+use app\action\CommonController;
+
 class ChannelController extends CommonController
 {
     public function index() {

@@ -13,6 +13,9 @@ namespace frame\core;
 
 class App
 {
+    /**
+     * 启动应用
+     */
     public static function run()
     {
         $request = new Request();
@@ -21,6 +24,10 @@ class App
         self::request($request);
     }
 
+    /**
+     * 访问控制器
+     * @param Request $request
+     */
     public static function request(Request $request)
     {
         $obj = new $request->route['controller_namespace'];
