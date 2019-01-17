@@ -18,7 +18,6 @@ class BackUpController extends CommonController
 //        echo '<pre>';
 //        print_r(($this->menu)[0]['name']);
 //        echo '<pre>';
-////        var_dump($this->smarty);
         $this->display('tpl/default/admin/index/index.html');
     }
 

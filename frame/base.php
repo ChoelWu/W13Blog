@@ -32,3 +32,5 @@ frame\core\Loader::register();
 frame\core\Error::register();
 
 frame\core\Config::set(include(FRAME_PATH . DS . 'config.php'));
+
+include FRAME_PATH . DS . 'autoload.php';

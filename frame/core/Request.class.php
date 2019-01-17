@@ -25,6 +25,11 @@ class Request
 
     public $pathInfo;
 
+    public $route = [];
+
+    /**
+     * 生成請求
+     */
     public function create()
     {
         $this->host = $_SERVER['HTTP_HOST'];
@@ -40,10 +45,18 @@ class Request
         $this->pathInfo = $_SERVER['PATH_INFO'];
     }
 
-    public function pathInfo()
+    /**
+     * 生成路由
+     */
+    public function route()
     {
-        $path_info = $_SERVER['PATH_INFO'];
-        echo $path_info;
-        return $path_info;
+        if (!empty($this->pathInfo)) {
+            $route = explode('/', substr($this->pathInfo, 1, strlen($this->pathInfo) - 1));
+            $this->route['group'] = isset($route[0]) ? $route[0] : Config::get('default_group');
+            $this->route['controller'] = isset($route[1]) ? $route[1] : 'Index';
+            $this->route['method'] = isset($route[2]) ? $route[2] : 'index';
+            $controller_namespace = 'app\action\\' . $this->route['group'] . '\\' . ucfirst($this->route['controller']) . 'Controller';
+            $this->route['controller_namespace'] = $controller_namespace;
+        }
     }
 }

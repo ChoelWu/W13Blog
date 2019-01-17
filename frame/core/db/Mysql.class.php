@@ -149,7 +149,6 @@ class Mysql
         $where_sql = implode(' AND ', $where_arr);
         $value_sql = implode(',', $value_arr);
         $sql = 'UPDATE `' . $table . '` SET ' . $value_sql . ' WHERE ' . $where_sql . ';';
-        var_dump($sql);
         $result = mysqli_query($this->con, $sql);
         return $result;
     }

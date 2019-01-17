@@ -9,9 +9,12 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include CORE_PATH . '/action/BaseController.class.php';
+namespace app\action;
 
-class CommonController extends BaseController
+use frame\core\Controller;
+use frame\core\Config;
+
+class CommonController extends Controller
 {
     public $menu;
     public function __construct()
@@ -19,13 +22,13 @@ class CommonController extends BaseController
         parent::__construct();
         $menu = $this->getMenu();
         $this->menu = $menu;
-        $this->assign(['menu_list' => $menu]);
+//        $this->assign(['menu_list' => $menu]);
 
     }
 
     public function getMenu()
     {
-        $menu = getConfig('menu');
+        $menu = Config::get('menu');
         return $menu;
     }
 }

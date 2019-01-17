@@ -17,9 +17,14 @@ class App
     {
         $request = new Request();
         $request->create();
-//        $request->pathInfo();
-        echo '<pre>';
-        var_dump($request);
-        echo '<pre>';
+        $request->route();
+        self::request($request);
+    }
+
+    public static function request(Request $request)
+    {
+        $obj = new $request->route['controller_namespace'];
+        $method = $request->route['method'];
+        $obj->$method();
     }
 }

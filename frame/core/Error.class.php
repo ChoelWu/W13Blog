@@ -15,9 +15,8 @@ class Error
 {
     public static function register()
     {
+        ini_set('display_errors',1);
+        ini_set('display_startup_errors',1);
         error_reporting(E_ALL);
-        set_error_handler([__CLASS__, 'appError']);
-        set_exception_handler([__CLASS__, 'appException']);
-        register_shutdown_function([__CLASS__, 'appShutdown']);
     }
 }

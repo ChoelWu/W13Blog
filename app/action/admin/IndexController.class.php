@@ -8,22 +8,23 @@
 // +----------------------------------------------------------------------
 // | Author: Choel
 // +----------------------------------------------------------------------
+namespace app\action\admin;
 
-include ACTION_PATH . '/CommonController.class.php';
+use app\action\CommonController;
 
 class IndexController extends CommonController
 {
     public function index()
     {
+        echo 'OK';
 //        echo '<pre>';
 //        print_r(($this->menu)[0]['name']);
 //        echo '<pre>';
-////        var_dump($this->smarty);
-        $this->display('tpl/default/admin/index/index.html');
+//        $this->display('tpl/default/admin/index/index.html');
     }
 
     public function home() {
-        $this->display('tpl/default/admin/index/index.html');
+//        $this->display('tpl/default/admin/index/index.html');
     }
 
 //    public function getMenu()
