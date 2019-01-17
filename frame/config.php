@@ -9,16 +9,17 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include ACTION_PATH . '/CommonController.class.php';
-
-class SensitiveWordController extends CommonController
-{
-    public function index()
-    {
-        $this->display('tpl/default/admin/index/index.html');
-    }
-
-    public function home() {
-        $this->display('tpl/default/admin/index/index.html');
-    }
-}
+return [
+    'cof1' => [
+        'sub_conf1' => '11',
+        'sub_conf2' => '12',
+        'sub_conf3' => '13',
+        'sub_conf4' => '14',
+    ],
+    'cof2' => [
+        'sub_conf1' => '11',
+        'sub_conf2' => '12',
+        'sub_conf3' => '13',
+        'sub_conf4' => '14',
+    ]
+];

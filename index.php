@@ -1,27 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Choel
- * Date: 2019/1/8
- * Time: 9:32
- */
-// 开启错误输出
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
+// +----------------------------------------------------------------------
+// | Created by PhpStorm.
+// +----------------------------------------------------------------------
+// | File: base.php
+// +----------------------------------------------------------------------
+// | Date: 2019/1/17
+// +----------------------------------------------------------------------
+// | Author: Choel
+// +----------------------------------------------------------------------
 
-define('ROOT_PATH', __DIR__);
-
-define('APP_PATH', ROOT_PATH . '/app');
-
-define('FRAME_PATH', ROOT_PATH . '/frame');
-
-define('CONFIG_PATH', ROOT_PATH . '/configs');
-
-define('ACTION_PATH', APP_PATH . '/action');
-
-define('CORE_PATH', FRAME_PATH . '/core');
+//define('ROOT_PATH', __DIR__); // 根目录路径
+define('APP_PATH', __DIR__ . '/app'); // 应用目录路径
+define('FRAME_PATH', __DIR__ . '/frame'); // 框架目录路径
 
 include FRAME_PATH . '/init.php';
-
-

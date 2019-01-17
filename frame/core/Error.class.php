@@ -9,16 +9,15 @@
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-include ACTION_PATH . '/CommonController.class.php';
+namespace frame\core;
 
-class SensitiveWordController extends CommonController
+class Error
 {
-    public function index()
+    public static function register()
     {
-        $this->display('tpl/default/admin/index/index.html');
-    }
-
-    public function home() {
-        $this->display('tpl/default/admin/index/index.html');
+        error_reporting(E_ALL);
+        set_error_handler([__CLASS__, 'appError']);
+        set_exception_handler([__CLASS__, 'appException']);
+        register_shutdown_function([__CLASS__, 'appShutdown']);
     }
 }
