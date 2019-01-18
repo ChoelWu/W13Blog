@@ -24,7 +24,14 @@ class Loader
         $base_dir = $static_namespace[$namespace_prefix];
         unset($namespace_arr[0]);
         $file_path = $base_dir . DS . implode(DS, $namespace_arr) . '.class.php';
-        include($file_path);
+        if (is_file($file_path)) {
+            include($file_path);
+        }
+    }
+
+    public static function Smarty_Autoloader($class)
+    {
+        echo 'Smarty_Autoloader ';
     }
 
     public static function register()

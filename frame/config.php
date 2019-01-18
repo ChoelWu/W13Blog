@@ -10,16 +10,9 @@
 // +----------------------------------------------------------------------
 
 return [
-    'cof1' => [
-        'sub_conf1' => '11',
-        'sub_conf2' => '12',
-        'sub_conf3' => '13',
-        'sub_conf4' => '14',
-    ],
-    'cof2' => [
-        'sub_conf1' => '11',
-        'sub_conf2' => '12',
-        'sub_conf3' => '13',
-        'sub_conf4' => '14',
+    'template' => [
+        'tpl_ext' => 'tpl',
+        'compile_dir' => ROOT_PATH . 'storage/compile',
+        'tpl_dir' => 'tpl'
     ]
 ];

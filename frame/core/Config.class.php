@@ -38,27 +38,22 @@ class Config
 
     /**
      * 设置配置参数
-     * @param $configVal1
-     * @param null $configVal2
+     * @param $configArr
+     * @param null $field
      * @return bool
      */
-    public static function set($configVal1, $configVal2 = null)
+    public static function set($configArr, $field = null)
     {
-        if (!empty($configVal1)) {
-            if (is_array($configVal1)) {
-                self::$config = $configVal1;
-            }
-
-            if (is_string($configVal1) && is_string($configVal2)) {
-                if (strpos($configVal1, '.')) {
-                    $config_key = explode('.', $configVal1);
-                    self::$config[$config_key[0]][$config_key[1]];
+        if (!empty($configArr)) {
+            if (is_array($configArr)) {
+                if (is_null($field)) {
+                    self::$config = array_merge(self::$config, $configArr);
                 } else {
-                    self::$config[$configVal1] = $configVal2;
+                    self::$config[$field] = $configArr;
                 }
-            }
 
-            return true;
+                return true;
+            }
         }
 
         return false;

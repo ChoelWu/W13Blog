@@ -22,10 +22,10 @@ class IndexController extends CommonController
 //        echo '<pre>';
 //        $this->display('tpl/default/admin/index/index.html');
     }
-
-    public function home() {
-//        $this->display('tpl/default/admin/index/index.html');
-    }
+//
+//    public function home() {
+////        $this->display('tpl/default/admin/index/index.html');
+//    }
 
 //    public function getMenu()
 //    {

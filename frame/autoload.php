@@ -20,5 +20,6 @@ $config_dir = scandir(ROOT_PATH . DS . 'configs');
 unset($config_dir[0]);
 unset($config_dir[1]);
 foreach ($config_dir as $config) {
-    frame\core\Config::set(include(ROOT_PATH . DS . 'configs' . DS . $config));
+    $basename = basename($config, '.php');
+    frame\core\Config::set(include(ROOT_PATH . DS . 'configs' . DS . $config), $basename);
 }

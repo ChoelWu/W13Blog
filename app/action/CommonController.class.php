@@ -16,19 +16,19 @@ use frame\core\Config;
 
 class CommonController extends Controller
 {
-    public $menu;
-    public function __construct()
-    {
-        parent::__construct();
-        $menu = $this->getMenu();
-        $this->menu = $menu;
-//        $this->assign(['menu_list' => $menu]);
-
-    }
-
-    public function getMenu()
-    {
-        $menu = Config::get('menu');
-        return $menu;
-    }
+//    public $menu;
+////    public function __construct()
+////    {
+////        parent::__construct();
+////        $menu = $this->getMenu();
+////        $this->menu = $menu;
+//////        $this->assign(['menu_list' => $menu]);
+////
+////    }
+////
+////    public function getMenu()
+////    {
+////        $menu = Config::get('menu');
+////        return $menu;
+////    }
 }
