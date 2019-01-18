@@ -13,14 +13,31 @@ namespace frame\core;
 
 class Controller
 {
-    public $view; // 视图对象
-    public $db;
+    public $view;
 
     public function __construct()
     {
-//        $db_type = Config::get('db.db_type');
-        //$db_config['db_host'], $db_config['db_user'], $db_config['db_pwd'], $db_config['db_name']
-//        $this->db = new Db();
+        $db = new Db();
         $this->view = new View();
+    }
+
+    /**
+     * 视图页面显示
+     * @param $tpl
+     */
+    public function display($tpl)
+    {
+        $tpl = Config::get('frame.template.tpl_dir') . DS . nameConvert($tpl, DS) . '.' . Config::get('frame.template.tpl_ext');
+        $this->view->display($tpl);
+    }
+
+    /**
+     * 数据绑定到视图页面
+     * @param $value1
+     * @param $value2
+     */
+    public function assign($value1, $value2)
+    {
+        $this->view->assign($value1, $value2);
     }
 }

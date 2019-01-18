@@ -2,19 +2,28 @@
 // +----------------------------------------------------------------------
 // | Created by PhpStorm.
 // +----------------------------------------------------------------------
-// | File: base.php
+// | File: file.php
 // +----------------------------------------------------------------------
-// | Date: 2019/1/17
+// | Date: 2019/1/18
 // +----------------------------------------------------------------------
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-namespace frame\core;
-
-class Db
+/**
+ * 将点号连接的名成转化为正常可使用的名称
+ * @param $name
+ * @param $glue
+ * @param bool $isString
+ * @return array|mixed
+ */
+function nameConvert($name, $glue, $isString = true)
 {
-    public function __construct()
-    {
-        de_dump('Db->construct function!');
+    if ($isString) {
+        $conversion = str_replace('.', $glue, $name);
+    } else {
+        $conversion = explode('.', $name);
     }
+
+    return $conversion;
 }
+

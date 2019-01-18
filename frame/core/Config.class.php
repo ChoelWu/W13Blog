@@ -24,9 +24,11 @@ class Config
     {
         if (strpos($configKey, '.')) {
             $config_key = explode('.', $configKey);
-            if (isset(self::$config[$config_key[0]][$config_key[1]])) {
-                return self::$config[$config_key[0]][$config_key[1]];
-            }
+            $config = self::$config;
+            do {
+                $config = $config[current($config_key)];
+            } while (next($config_key));
+            return $config;
         } else {
             if (isset(self::$config[$configKey])) {
                 return self::$config[$configKey];

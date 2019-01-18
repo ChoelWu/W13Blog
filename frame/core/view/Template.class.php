@@ -2,19 +2,28 @@
 // +----------------------------------------------------------------------
 // | Created by PhpStorm.
 // +----------------------------------------------------------------------
-// | File: base.php
+// | File: Template.class.php
 // +----------------------------------------------------------------------
-// | Date: 2019/1/17
+// | Date: 2019/1/18
 // +----------------------------------------------------------------------
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-namespace frame\core;
+namespace frame\core\view;
 
-class Db
+class Template
 {
     public function __construct()
     {
-        de_dump('Db->construct function!');
+    }
+
+    public function display()
+    {
+
+    }
+
+    public function assign()
+    {
+
     }
 }

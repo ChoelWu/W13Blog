@@ -20,24 +20,32 @@ class View
 
     public function __construct()
     {
-        $str = '15';
-        var_dump(is_string($str));
-        echo 'ppap';
+        de_dump('View->construct function!');
     }
 
+    /**
+     * 显示模板
+     * @param $filePath
+     */
     public function display($filePath)
     {
         if(!empty($filePath)) {
+            if(is_file($filePath)) {
+                include($filePath);
+            }
             $this->file = $filePath;
             if(strpos($filePath, '.')) {
                 $file_path_arr = explode('.', $filePath);
                 $this->file = implode(DS, $file_path_arr);
             }
-
-
         }
     }
 
+    /**
+     * 数据绑定
+     * @param $value1
+     * @param null $value2
+     */
     public function assign($value1, $value2 = null)
     {
         if (is_array($value1)) {

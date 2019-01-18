@@ -2,19 +2,31 @@
 // +----------------------------------------------------------------------
 // | Created by PhpStorm.
 // +----------------------------------------------------------------------
-// | File: base.php
+// | File: output.php
 // +----------------------------------------------------------------------
-// | Date: 2019/1/17
+// | Date: 2019/1/18
 // +----------------------------------------------------------------------
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-namespace frame\core;
+/**
+ * dump 美化输出
+ * @param $var
+ */
+function de_dump($var) {
+    echo '<pre>';
+    var_dump($var);
+    echo '<br>';
+    echo '<pre>';
+}
 
-class Db
-{
-    public function __construct()
-    {
-        de_dump('Db->construct function!');
-    }
+/**
+ * print_r 美化输出
+ * @param $var
+ */
+function de_print_r($var) {
+    echo '<pre>';
+    print_r($var);
+    echo '<br>';
+    echo '<pre>';
 }

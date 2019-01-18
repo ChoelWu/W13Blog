@@ -14,14 +14,18 @@ use app\action\CommonController;
 
 class IndexController extends CommonController
 {
-    public function index()
-    {
-        echo 'OK';
+    public function index() {
+        de_dump('index Controller output!');
+        $this->display('admin.index.index');
+    }
+//    public function index()
+//    {
+//        echo 'OK';
 //        echo '<pre>';
 //        print_r(($this->menu)[0]['name']);
 //        echo '<pre>';
 //        $this->display('tpl/default/admin/index/index.html');
-    }
+//    }
 //
 //    public function home() {
 ////        $this->display('tpl/default/admin/index/index.html');
