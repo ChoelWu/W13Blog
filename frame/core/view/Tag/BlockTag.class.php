@@ -2,21 +2,16 @@
 // +----------------------------------------------------------------------
 // | Created by PhpStorm.
 // +----------------------------------------------------------------------
-// | File: base.php
+// | File: IfTag.class.php
 // +----------------------------------------------------------------------
-// | Date: 2019/1/17
+// | Date: 2019/1/21
 // +----------------------------------------------------------------------
 // | Author: Choel
 // +----------------------------------------------------------------------
 
-namespace app\action\index;
+namespace frame\core\view\Tag;
 
-use app\action\CommonController;
-
-class IndexController extends CommonController
+class BlockTag
 {
-    public function index() {
-        echo 'get index/index/index';
-        $this->display('admin.index.index');
-    }
+
 }

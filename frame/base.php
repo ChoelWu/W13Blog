@@ -33,16 +33,16 @@ if (is_file(ENV_FILE)) {
 include CORE_PATH . DS . 'Loader.class.php';
 
 //
-frame\core\Loader::register();
+core\Loader::register();
 
-frame\core\Error::register();
+core\Error::register();
 
 // 引入自动加载函数
 include FRAME_PATH . DS . 'autoload.php';
 
 // 引入函数和配置文件
 includeFiles(CORE_PATH . DS . 'function');  // 框架函数
-includeFiles(CORE_PATH . DS . 'config' . DS . 'config.php', 'loadConfig');  // 框架配置文件
+includeFiles(CORE_PATH . DS . 'config', 'loadConfig');  // 框架配置文件
 
 includeFiles(APP_PATH . DS . 'function');  // 应用函数
-includeFiles(APP_PATH . DS . 'configs', 'loadConfig');  // 应用配置文件
+includeFiles(ROOT_PATH . DS . 'config', 'loadConfig');  // 应用配置文件

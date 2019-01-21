@@ -37,6 +37,11 @@ class Template
         return false;
     }
 
+    /**
+     * 设置模板缓存
+     * @param $filePath
+     * @param $content
+     */
     public function setTplCache($filePath, $content)
     {
         file_put_contents($filePath, $content);

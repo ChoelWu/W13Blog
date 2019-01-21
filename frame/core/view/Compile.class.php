@@ -14,13 +14,13 @@ namespace frame\core\view;
 class Compile
 {
     private $patten = [
-        '#\{\\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}#',
-        '#\{if (.*?)\}#',
-        '#\{(else if|elseif) (.*?)\}#',
-        '#\{else\}#',
-        '#\{foreach \\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)}#',
-        '#\{\/(foreach|if)}#',
-        '#\{\\^(k|v)\}#',
+        '#\<{\\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}>#',
+        '#\<{if (.*?)\}>#',
+        '#\<{(else if|elseif) (.*?)\}>#',
+        '#\<{else\}>#',
+        '#\<{foreach \\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)}>#',
+        '#\<{\/(foreach|if)}>#',
+        '#\<{\\^(k|v)\}>#',
     ];
     private $translation = [
         "<?php echo \$this->_valueMap['\\1']; ?>",
@@ -35,6 +35,7 @@ class Compile
     public function compile($content)
     {
         $content = preg_replace($this->patten, $this->translation, $content);
+        file_put_contents('./txt.txt', $content);
         return $content;
     }
 

@@ -573,3 +573,4 @@
 <!-- /.row -->
 <{/block}>
 <{block name='footer'}><{/block}>
+<{if a=b}>123<{/if}>

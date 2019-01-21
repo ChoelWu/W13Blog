@@ -18,7 +18,7 @@
  */
 function nameConvert($name, $glue, $isString = true)
 {
-    if (strpos($name, $glue) == 0 || strpos($name, $glue) == strlen($name) - 1) {
+    if (strpos($name, '.') == 0 || strpos($name, '.') == strlen($name) - 1) {
         return false;
     }
 

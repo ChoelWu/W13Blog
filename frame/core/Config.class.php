@@ -13,7 +13,7 @@ namespace frame\core;
 
 class Config
 {
-    private static $config = [];
+    public static $config = [];
 
     /**
      * 设置配置参数

@@ -27,7 +27,7 @@ class Controller
      */
     public function display($tpl)
     {
-        $tpl = config('frame.template.tpl_dir') . DS . nameConvert($tpl, DS) . '.' . config('frame.template.tpl_ext');
+        $tpl = config('config.template.tpl_dir') . DS . nameConvert($tpl, DS) . '.' . config('config.template.tpl_ext');
         $this->view->display($tpl);
     }
 
