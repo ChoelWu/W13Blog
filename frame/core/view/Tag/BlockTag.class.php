@@ -11,7 +11,7 @@
 
 namespace frame\core\view\Tag;
 
-class BlockTag
+class BlockTag extends Tag
 {
 
 }

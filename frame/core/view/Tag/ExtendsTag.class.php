@@ -11,7 +11,7 @@
 
 namespace frame\core\view\Tag;
 
-class ExtendsTag
+class ExtendsTag extends Tag
 {
 
 }

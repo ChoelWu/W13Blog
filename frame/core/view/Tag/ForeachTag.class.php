@@ -11,7 +11,7 @@
 
 namespace frame\core\view\Tag;
 
-class ForeachTag
+class ForeachTag extends Tag
 {
 
 }
