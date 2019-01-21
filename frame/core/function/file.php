@@ -18,6 +18,10 @@
  */
 function nameConvert($name, $glue, $isString = true)
 {
+    if (strpos($name, $glue) == 0 || strpos($name, $glue) == strlen($name) - 1) {
+        return false;
+    }
+
     if ($isString) {
         $conversion = str_replace('.', $glue, $name);
     } else {
@@ -26,4 +30,3 @@ function nameConvert($name, $glue, $isString = true)
 
     return $conversion;
 }
-

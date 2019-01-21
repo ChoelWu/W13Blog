@@ -11,15 +11,17 @@
 
 namespace frame\core;
 
-use frame\core\View\Compile;
+use frame\core\view\Template;
 
 class View
 {
+    public $template;
     public $data = [];
     public $file;
 
     public function __construct()
     {
+        $this->template = new Template();
         de_dump('View->construct function!');
     }
 
@@ -29,14 +31,22 @@ class View
      */
     public function display($filePath)
     {
-        if(!empty($filePath)) {
-            if(is_file($filePath)) {
-                include($filePath);
+        if (!empty($filePath)) {
+            if (strpos($filePath, '.')) {
+                $filePath = nameConvert($filePath, DS, true);
             }
-            $this->file = $filePath;
-            if(strpos($filePath, '.')) {
-                $file_path_arr = explode('.', $filePath);
-                $this->file = implode(DS, $file_path_arr);
+            if (is_file($filePath)) {
+                $this->file = $filePath;
+            }
+            $tpl_cache = $this->template->getTplCache($filePath);
+            if (!$tpl_cache) {
+                ob_start();
+                ob_clean();
+                $compiled_file = $this->template->compileFile($filePath);
+                $this->template->setTplCache($compiled_file, ob_get_contents());
+                ob_end_flush();
+            } else {
+                readfile($tpl_cache);
             }
         }
     }
@@ -54,10 +64,5 @@ class View
         if (is_string($value1)) {
             $this->data[$value1] = $value2;
         }
-    }
-
-    public function compile()
-    {
-        new Compile();
     }
 }

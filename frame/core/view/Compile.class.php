@@ -32,27 +32,24 @@ class Compile
         '<?php echo \$\\1?>'
     ];
 
-    /**
-     * 编译模板
-     * @param $sourceFile
-     * @param $compileFile
-     */
-    public function compile($sourceFile, $compileFile)
+    public function compile($content)
     {
-        $content = file_get_contents($sourceFile);
         $content = preg_replace($this->patten, $this->translation, $content);
-        file_put_contents($compileFile, $content);
+        return $content;
     }
 
-    public function extendsTpl() {
-
-    }
-
-    public function includeTpl() {
+    public function extendsTpl()
+    {
 
     }
 
-    public function blockTpl() {
+    public function includeTpl()
+    {
+
+    }
+
+    public function blockTpl()
+    {
 
     }
 }

@@ -8,25 +8,18 @@
 // +----------------------------------------------------------------------
 // | Author: choel
 // +----------------------------------------------------------------------
+namespace frame;
 
-$function_dir = scandir(APP_PATH . DS . 'function');
-unset($function_dir[0]);
-unset($function_dir[1]);
-foreach ($function_dir as $function) {
-    include(APP_PATH . DS . 'function' . DS . $function);
-}
-
-$frame_function_dir = scandir(CORE_PATH . DS . 'function');
-unset($frame_function_dir[0]);
-unset($frame_function_dir[1]);
-foreach ($frame_function_dir as $function) {
-    include(CORE_PATH . DS . 'function' . DS . $function);
-}
-
-$config_dir = scandir(ROOT_PATH . DS . 'configs');
-unset($config_dir[0]);
-unset($config_dir[1]);
-foreach ($config_dir as $config) {
-    $basename = basename($config, '.php');
-    frame\core\Config::set(include(ROOT_PATH . DS . 'configs' . DS . $config), $basename);
+// 文件目录引入函数
+function includeFiles($dir_name, $call = '')
+{
+    $files = scandir(APP_PATH . DS . $dir_name);
+    unset($files[0]);
+    unset($files[1]);
+    foreach ($files as $file) {
+        include(APP_PATH . DS . 'function' . DS . $file);
+        if (is_string($call)) {
+            $call();
+        }
+    }
 }

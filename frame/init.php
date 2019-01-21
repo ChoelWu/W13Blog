@@ -11,6 +11,8 @@
 
 namespace frame;
 
+// 加载初始化文件
 include 'base.php';
 
+// 启动应用
 core\App::run();
