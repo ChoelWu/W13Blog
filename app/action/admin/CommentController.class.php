@@ -21,7 +21,7 @@ class CommentController extends CommonController
      */
     public function index()
     {
-        $status = getConfig('dictionary.comment.status', '未知');
+        $status = config('dictionary.comment.status', '未知');
         $this->assign([
             'status' => $status
         ]);
@@ -39,8 +39,8 @@ class CommentController extends CommonController
             $sql = 'SELECT * FROM `blog_comment`;';
             $comment_list = $this->db->getAll($sql);
             $commentTree = getCommentTree($comment_list, 0, 1);
-            $type_list = getConfig('dictionary.comment.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.comment.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,
@@ -79,8 +79,8 @@ class CommentController extends CommonController
             $sql = 'SELECT * FROM `blog_comment`;';
             $comment_list = $this->db->getAll($sql);
             $commentTree = getCommentTree($comment_list, 0, 1);
-            $type_list = getConfig('dictionary.comment.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.comment.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,

@@ -23,8 +23,8 @@ class SlidePicController extends CommonController
     {
         $sql = 'SELECT a.*, b.channel_name FROM `blog_slide_pic` as a, `blog_channel` as b WHERE a.channel_id=b.id;';
         $slide_pic_list = $this->db->getAll($sql);
-        $status = getConfig('dictionary.common.status', '未知');
-        $is_top = getConfig('dictionary.slide_pic.is_top', '未知');
+        $status = config('dictionary.common.status', '未知');
+        $is_top = config('dictionary.slide_pic.is_top', '未知');
         $this->assign([
             'slide_pic_list' => $slide_pic_list,
             'is_top' => $is_top,
@@ -40,8 +40,8 @@ class SlidePicController extends CommonController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $status_list = getConfig('dictionary.common.status', '未知');
-            $is_top_list = getConfig('dictionary.slide_pic.is_top', '未知');
+            $status_list = config('dictionary.common.status', '未知');
+            $is_top_list = config('dictionary.slide_pic.is_top', '未知');
 
             $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
             $channel_list = $this->db->getAll($channel_sql);
@@ -75,8 +75,8 @@ class SlidePicController extends CommonController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = get('id');
             $slide_pic_row = $this->db->getRow('blog_slide_pic',['id' => $id]);
-            $status_list = getConfig('dictionary.common.status', '未知');
-            $is_top_list = getConfig('dictionary.slide_pic.is_top', '未知');
+            $status_list = config('dictionary.common.status', '未知');
+            $is_top_list = config('dictionary.slide_pic.is_top', '未知');
 
             $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
             $channel_list = $this->db->getAll($channel_sql);

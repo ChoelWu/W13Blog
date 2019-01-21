@@ -24,8 +24,8 @@ class ChannelController extends CommonController
         include APP_PATH . '/function/tree.php';
         $sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
         $channel_list = $this->db->getAll($sql);
-        $type = getConfig('dictionary.channel.type', '未知');
-        $status = getConfig('dictionary.common.status', '未知');
+        $type = config('dictionary.channel.type', '未知');
+        $status = config('dictionary.common.status', '未知');
         $channel_list = getChannelTree($channel_list, 0,1);
         $this->assign([
             'channel_list' => $channel_list,
@@ -46,8 +46,8 @@ class ChannelController extends CommonController
             $sql = 'SELECT * FROM `blog_channel`;';
             $channel_list = $this->db->getAll($sql);
             $channelTree = getChannelTree($channel_list, 0, 1);
-            $type_list = getConfig('dictionary.channel.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.channel.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,
@@ -86,8 +86,8 @@ class ChannelController extends CommonController
             $sql = 'SELECT * FROM `blog_channel`;';
             $channel_list = $this->db->getAll($sql);
             $channelTree = getChannelTree($channel_list, 0, 1);
-            $type_list = getConfig('dictionary.channel.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.channel.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,

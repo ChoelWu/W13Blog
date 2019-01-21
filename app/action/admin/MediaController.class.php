@@ -27,8 +27,8 @@ class MediaController extends CommonController
             $sql = 'SELECT * FROM `blog_channel`;';
             $channel_list = $this->db->getAll($sql);
             $channelTree = getChannelTree($channel_list, 0, 1);
-            $type_list = getConfig('dictionary.channel.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.channel.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,
@@ -67,8 +67,8 @@ class MediaController extends CommonController
             $sql = 'SELECT * FROM `blog_channel`;';
             $channel_list = $this->db->getAll($sql);
             $channelTree = getChannelTree($channel_list, 0, 1);
-            $type_list = getConfig('dictionary.channel.type', '未知');
-            $status_list = getConfig('dictionary.common.status', '未知');
+            $type_list = config('dictionary.channel.type', '未知');
+            $status_list = config('dictionary.common.status', '未知');
             $this->assign([
                 'type_list' => $type_list,
                 'status_list' => $status_list,

@@ -23,10 +23,10 @@ class ArticleController extends CommonController
     {
         $sql = 'SELECT a.*, b.channel_name FROM `blog_article` as a, `blog_channel` as b WHERE a.channel_id=b.id;';
         $article_list = $this->db->getAll($sql);
-        $status = getConfig('dictionary.common.status', '未知');
-        $is_top = getConfig('dictionary.article.is_top', '未知');
-        $is_secret = getConfig('dictionary.article.is_secret', '未知');
-        $type = getConfig('dictionary.article.type', '未知');
+        $status = config('dictionary.common.status', '未知');
+        $is_top = config('dictionary.article.is_top', '未知');
+        $is_secret = config('dictionary.article.is_secret', '未知');
+        $type = config('dictionary.article.type', '未知');
         $this->assign([
             'article_list' => $article_list,
             'is_top' => $is_top,
@@ -44,11 +44,11 @@ class ArticleController extends CommonController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $status_list = getConfig('dictionary.common.status', '未知');
-            $is_top_list = getConfig('dictionary.article.is_top', '未知');
-            $type_list = getConfig('dictionary.article.type', '未知');
-            $category_list = getConfig('dictionary.article.category', '未知');
-            $is_secret_list = getConfig('dictionary.article.is_secret', '未知');
+            $status_list = config('dictionary.common.status', '未知');
+            $is_top_list = config('dictionary.article.is_top', '未知');
+            $type_list = config('dictionary.article.type', '未知');
+            $category_list = config('dictionary.article.category', '未知');
+            $is_secret_list = config('dictionary.article.is_secret', '未知');
             $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
             $channel_list = $this->db->getAll($channel_sql);
             include APP_PATH . '/function/tree.php';
@@ -84,11 +84,11 @@ class ArticleController extends CommonController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $id = get('id');
             $article = $this->db->getRow('blog_article',['id' => $id]);
-            $status_list = getConfig('dictionary.common.status', '未知');
-            $is_top_list = getConfig('dictionary.article.is_top', '未知');
-            $type_list = getConfig('dictionary.article.type', '未知');
-            $category_list = getConfig('dictionary.article.category', '未知');
-            $is_secret_list = getConfig('dictionary.article.is_secret', '未知');
+            $status_list = config('dictionary.common.status', '未知');
+            $is_top_list = config('dictionary.article.is_top', '未知');
+            $type_list = config('dictionary.article.type', '未知');
+            $category_list = config('dictionary.article.category', '未知');
+            $is_secret_list = config('dictionary.article.is_secret', '未知');
             $channel_sql = 'SELECT * FROM `blog_channel` ORDER BY `channel_level` ASC, `channel_index` ASC;';
             $channel_list = $this->db->getAll($channel_sql);
             include APP_PATH . '/function/tree.php';

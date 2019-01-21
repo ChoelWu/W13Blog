@@ -17,7 +17,7 @@ class UserInfoController extends CommonController
 {
     public function index()
     {
-        $user_info = getConfig('info.user');
+        $user_info = config('info.user');
         $this->assign([
             'user_info' => $user_info
         ]);

@@ -17,7 +17,7 @@ class BlogInfoController extends CommonController
 {
     public function index()
     {
-        $blog_info = getConfig('info.blog');
+        $blog_info = config('info.blog');
         $this->assign([
             'blog_info' => $blog_info
         ]);

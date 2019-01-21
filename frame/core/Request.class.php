@@ -55,7 +55,7 @@ class Request
             $path_info = substr($this->pathInfo, 1, strlen($this->pathInfo) - 1);
         }
         $route = explode('/', $path_info);
-        $this->route['group'] = (isset($route[0]) && !empty($route[0])) ? $route[0] : Config::get('common.default_group');
+        $this->route['group'] = (isset($route[0]) && !empty($route[0])) ? $route[0] : config('common.default_group');
         $this->route['controller'] = (isset($route[1]) && !empty($route[1])) ? $route[1] : 'Index';
         $this->route['method'] = (isset($route[2]) && !empty($route[2])) ? $route[2] : 'index';
         $controller_namespace = 'app\action\\' . $this->route['group'] . '\\' . ucfirst($this->route['controller']) . 'Controller';
