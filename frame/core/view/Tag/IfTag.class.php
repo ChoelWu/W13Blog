@@ -19,7 +19,7 @@ class IfTag extends Tag
      */
     public function compile()
     {
-        $echoStr = '<php> if (';
+        $echoStr = '<?php if (';
         $ifCondition = substr($this->tagArr[0], strpos($this->tagArr[0], 'if condition=') + strlen('if condition='), strlen($this->tagArr[0]) - 1);
         $echoStr .= trim($ifCondition, substr($ifCondition, 0, 1)) . ') { echo "' . $this->htmlArr[0] . '" }';
         foreach ($this->tagArr as $key => $tag) {
@@ -30,7 +30,7 @@ class IfTag extends Tag
                 $echoStr .= ' else { ' . 'echo "' . $this->htmlArr[$key] . '" }';
             }
         }
-        $echoStr = '</php>';
+        $echoStr = '?>';
 
         return $echoStr;
     }

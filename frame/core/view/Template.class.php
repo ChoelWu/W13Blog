@@ -54,6 +54,7 @@ class Template
      */
     public function compileFile($filePath)
     {
+        de_dump(__NAMESPACE__ . __CLASS__ . '>>compileFile');
         if (is_file($filePath)) {
             $content = file_get_contents($filePath);
             $compile_content = $this->compile->compile($content);

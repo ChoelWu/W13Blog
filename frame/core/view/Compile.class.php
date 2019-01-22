@@ -34,8 +34,17 @@ class Compile
 
     public function compile($content)
     {
-        $content = preg_replace($this->patten, $this->translation, $content);
-//        file_put_contents('./txt.txt', $content);
+//        de_dump(__NAMESPACE__ . __CLASS__ . '>>' . __FUNCTION__);
+        $pattern = [
+            '/\<{([a-zA-Z0-9\s]*)}>/',
+            '/\<{(.*)\/}>/'
+        ];
+        $content = preg_replace_callback($pattern, function($matches) {
+            de_dump($matches);
+            return $matches[1];
+        }, $content);
+//        $content = preg_replace($this->patten, $this->translation, $content);
+        file_put_contents('./txt.tpl', $content);
         return $content;
     }
 

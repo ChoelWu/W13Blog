@@ -40,7 +40,7 @@ class View
                 ob_start();
                 ob_clean();
                 $compiled_file = $this->template->compileFile($filePath);
-                de_dump($compiled_file);
+//                de_dump($compiled_file);
                 $this->template->setTplCache($compiled_file, ob_get_contents());
                 ob_end_flush();
             } else {
