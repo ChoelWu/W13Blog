@@ -35,7 +35,7 @@ class Compile
     public function compile($content)
     {
         $content = preg_replace($this->patten, $this->translation, $content);
-        file_put_contents('./txt.txt', $content);
+//        file_put_contents('./txt.txt', $content);
         return $content;
     }
 

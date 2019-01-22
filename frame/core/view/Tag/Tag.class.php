@@ -14,10 +14,11 @@ namespace frame\core\view\Tag;
 class Tag
 {
     public $tagArr;
+    public $htmlArr;
 
-    public function __construct($tagArr)
+    public function __construct($tagArr, $htmlArr)
     {
         $this->tagArr = $tagArr;
+        $this->htmlArr = $htmlArr;
     }
 }
-

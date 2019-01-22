@@ -13,30 +13,35 @@ namespace frame\core\view\Tag;
 
 class ForeachTag extends Tag
 {
+    /**
+     * 编译foreach循环标签
+     * @return string
+     */
     public function compile()
     {
-        $echoStr = '<?php foreach (';
-        $foreachStartArr = explode(' ', $this->tagArr[0]);
-        foreach($foreachStartArr as $foreachStart) {
-            if(strpos($foreachStart, '=')) {
-                if(strpos($foreachStart, 'list')) {
-                    $list = explode('=', $foreachStart);
-                    $echoStr .= '$' . $list[1];
-                }
+        $foreachStartArr = explode(" ", $this->tagArr[0]);
+        $list_str = '';
+        $key_str = '';
+        $value_str = '';
 
-                if(strpos($foreachStart, 'value')) {
-                    $value = explode('=', $foreachStart);
-                    $echoStr .= ' as ' . $value[1];
-                }
+        foreach ($foreachStartArr as $foreachStart) {
+            $foreachItemArr = explode("=", $foreachStart);
+            if ($foreachItemArr[0] == 'list') {
+                $list_str = '$' . $foreachItemArr[1] . ' as ';
+            }
 
-                if(strpos($foreachStart, 'key')) {
-                    $key = explode('=', $foreachStart);
-                    $echoStr .= '$' . $key[1];
-                }
+            if ($foreachItemArr[0] == 'value') {
+                $value_str = '$' . $foreachItemArr[1];
+
+            }
+
+            if ($foreachItemArr[0] == 'key') {
+                $key_str = '$' . $foreachItemArr[1] . '=>';
+
             }
         }
+
+        $echoStr = '<?php foreach (' . $list_str . $key_str . $value_str . ') {' . $this->htmlArr[0] . '} ?>';
+        return $echoStr;
     }
 }
-
-// <{foreach list=menu_list key=menu_key value=menu}>
-// <{/foreach}>
